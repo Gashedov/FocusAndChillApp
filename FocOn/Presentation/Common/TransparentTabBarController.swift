@@ -56,6 +56,7 @@ class TransparentTabBarController: UIViewController {
         }
 
         viewControllers = controllers
+        selectTab(at: selectedIndex)
         add(viewControllers[selectedIndex])
     }
 
@@ -68,6 +69,7 @@ class TransparentTabBarController: UIViewController {
     @objc private func tabBatItemAction(_ sender: UIButton) {
         let newIndex = sender.tag
         guard newIndex != selectedIndex else { return }
+        selectTab(at: newIndex)
         updateCurrentController(for: newIndex)
     }
 
@@ -75,6 +77,18 @@ class TransparentTabBarController: UIViewController {
         remove(viewControllers[selectedIndex])
         add(viewControllers[index])
         selectedIndex = index
+    }
+
+    private func selectTab(at index: Int) {
+        for view in buttonStackView.arrangedSubviews {
+            guard let button = view as? UIButton else { continue }
+            button.tintColor = .lightGray
+            button.isSelected = false
+        }
+
+        let buttonToSelect = buttonStackView.arrangedSubviews[index] as? UIButton
+        buttonToSelect?.tintColor = .lightText
+        buttonToSelect?.isSelected = true
     }
 
     private func setupUI() {

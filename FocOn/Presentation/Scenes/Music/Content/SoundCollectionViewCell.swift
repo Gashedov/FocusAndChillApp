@@ -55,6 +55,6 @@ class SoundCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
 
     func setup(title: String, image: String) {
         titleLabel.text = title
-        imageView.image = image
+        imageView.image = UIImage()
     }
 }
