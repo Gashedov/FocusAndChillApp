@@ -7,17 +7,23 @@
 
 import UIKit
 
+enum SoundType {
+    case music
+    case whiteNoize
+}
+
 protocol MusicBuilder {
     func build() -> UIViewController
 }
 
 protocol MusicViewModel {
     var music: [Sound] { get }
-    var whiteNoize: [Sound] { get }
+    var whiteNoizes: [Sound] { get }
     var delegate: MusicViewModelDelegate? { get set }
+    var initialPlayerVolume: Float { get }
     
-    func musicSelected(at: Int)
-    func whiteNoizeSelected(at: Int)
+    func soundSelected(at: Int, for: SoundType)
+    func setup(volume: Float, for: SoundType)
     func fetchMusic()
 }
 

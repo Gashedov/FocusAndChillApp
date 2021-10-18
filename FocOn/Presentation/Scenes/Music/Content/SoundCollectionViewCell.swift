@@ -16,15 +16,14 @@ class SoundCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
 
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(10)
-            $0.height.equalTo(imageView.snp.width)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(40)
         }
 
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview().inset(5)
+            $0.top.equalTo(imageView.snp.bottom).offset(10)
+            $0.leading.trailing.bottom.equalToSuperview().inset(5)
         }
 
         backgroundColor = .clear
@@ -44,17 +43,36 @@ class SoundCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                titleLabel.textColor = .green
-                backgroundColor = .lightGray
+                titleLabel.textColor = R.color.sliderThumbColor()
             } else {
                 titleLabel.textColor = .black
-                backgroundColor = .clear
             }
         }
     }
 
-    func setup(title: String, image: String) {
+    func setup(title: String, imageURL: URL?) {
         titleLabel.text = title
-        imageView.image = UIImage()
+        imageView.image = drawPDFfromURL(url: imageURL)
+    }
+
+    func drawPDFfromURL(url: URL?) -> UIImage? {
+        guard let url = url else { return nil }
+        guard let document = CGPDFDocument(url as CFURL) else { return nil }
+        guard let page = document.page(at: 1) else { return nil }
+
+        let pageRect =  page.getBoxRect(.artBox)
+        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+        let image = renderer.image { context in
+            UIColor.clear.set()
+            context.fill(pageRect)
+
+            context.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+            context.cgContext.scaleBy(x: 1.0, y: -1.0)
+
+            context.cgContext.drawPDFPage(page)
+        }
+
+        return image
     }
 }
+

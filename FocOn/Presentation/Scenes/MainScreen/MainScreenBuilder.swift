@@ -9,6 +9,16 @@ import UIKit
 
 class MainScreenBuilderImpl {
     func build() -> UIViewController {
-        return MainScreenView()
+        let view = MainScreenView()
+
+        let homeView = HomeBuilderImpl().build()
+        homeView.tabBarItem.image = R.image.homeButton()
+
+        let musicView = MusicBuilderImpl().build()
+        musicView.tabBarItem.image = R.image.musicIcon()
+
+        view.setViewControllers([homeView, musicView])
+
+        return view
     }
 }

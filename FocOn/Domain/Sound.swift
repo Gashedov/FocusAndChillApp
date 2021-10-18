@@ -10,18 +10,6 @@ import Foundation
 struct Sound {
     let title: String
     let url: URL?
-    let image: String
+    let image: URL?
     let type: SoundType
-
-    static var empty = Sound(
-        title: "",
-        url: URL(string: ""),
-        image: "",
-        type: .music
-    )
-}
-
-enum SoundType {
-    case music
-    case whiteNoize
 }

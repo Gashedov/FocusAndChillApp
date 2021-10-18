@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeRouterImpl: HomeRouter {
-    let view: UIViewController
+    private weak var view: UIViewController?
 
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
@@ -22,7 +22,7 @@ class HomeRouterImpl: HomeRouter {
         settingsView.transitioningDelegate = slideInTransitioningDelegate
         settingsView.modalPresentationStyle = .custom
         settingsView.modalTransitionStyle = .crossDissolve
-        view.showDetailViewController(settingsView, sender: self)
+        view?.showDetailViewController(settingsView, sender: self)
     }
 }
 

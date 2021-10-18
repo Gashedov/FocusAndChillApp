@@ -1,0 +1,6 @@
+framework module Pods_FocOn_FocOnUITests {
+  umbrella header "Pods-FocOn-FocOnUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

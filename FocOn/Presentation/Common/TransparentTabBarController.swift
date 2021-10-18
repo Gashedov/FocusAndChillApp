@@ -28,7 +28,8 @@ class TransparentTabBarController: UIViewController {
 
         tabBarView.addSubview(buttonStackView)
         buttonStackView.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview().inset(20)
         }
     }
 
@@ -43,10 +44,10 @@ class TransparentTabBarController: UIViewController {
             let tabBarItem = controllers[index].tabBarItem
 
             let button = UIButton()
-            button.snp.makeConstraints { $0.size.equalTo(40) }
+            button.snp.makeConstraints { $0.size.equalTo(50) }
             button.setImage(tabBarItem?.image, for: .normal)
             button.setTitle(tabBarItem?.title, for: .normal)
-            button.layer.cornerRadius = 20
+            button.layer.cornerRadius = 25
             button.tintColor = .lightGray
             button.backgroundColor = .black.withAlphaComponent(0.1)
             button.tag = index
@@ -97,7 +98,7 @@ class TransparentTabBarController: UIViewController {
         buttonStackView.axis = .horizontal
         buttonStackView.distribution = .fillEqually
         buttonStackView.alignment = .fill
-        buttonStackView.spacing = 8
+        buttonStackView.spacing = 14
     }
 }
 

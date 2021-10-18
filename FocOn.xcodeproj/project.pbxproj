@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		175D609C182E87AF1456D58F /* Pods_FocOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFD41DF289674852595ACD5 /* Pods_FocOnTests.framework */; };
+		271F33BE270379DA00C02F9C /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271F33BD270379DA00C02F9C /* CustomSlider.swift */; };
 		27343F1D26FB35DC00116B19 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F1C26FB35DC00116B19 /* SettingsViewModel.swift */; };
 		27343F1F26FB35EE00116B19 /* SettingsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F1E26FB35EE00116B19 /* SettingsContract.swift */; };
 		27343F2126FB380800116B19 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F2026FB380800116B19 /* SettingsRouter.swift */; };
@@ -25,6 +26,8 @@
 		2742313D26F2780300A7162D /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742313C26F2780300A7162D /* SlideInPresentationManager.swift */; };
 		2742313F26F27A0800A7162D /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742313E26F27A0800A7162D /* SlideInPresentationController.swift */; };
 		2742314126F2802D00A7162D /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742314026F2802D00A7162D /* SlideInPresentationAnimator.swift */; };
+		275D7BAA2705B76F00A8928B /* Res in Resources */ = {isa = PBXBuildFile; fileRef = 275D7BA92705B76F00A8928B /* Res */; };
+		276CD8ED27077C2B00B6EC58 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276CD8EC27077C2B00B6EC58 /* AudioPlayer.swift */; };
 		276E453426FC8ACC00C2E944 /* SoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E453326FC8ACC00C2E944 /* SoundCollectionViewCell.swift */; };
 		276E453626FDC78100C2E944 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E453526FDC78100C2E944 /* Sound.swift */; };
 		27726E8E26FA790800DCFEEB /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27726E8D26FA790800DCFEEB /* MainScreenView.swift */; };
@@ -32,7 +35,7 @@
 		27929A4726F32B6C009DF3DD /* FadeInPresentaionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27929A4626F32B6C009DF3DD /* FadeInPresentaionManager.swift */; };
 		27929A4926F32E72009DF3DD /* FadeInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27929A4826F32E72009DF3DD /* FadeInPresentationController.swift */; };
 		27929A4B26F32E98009DF3DD /* FadeInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27929A4A26F32E98009DF3DD /* FadeInPresentationAnimator.swift */; };
-		27A9729E26F0FE9B0012932D /* MainScreenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9729D26F0FE9B0012932D /* MainScreenContract.swift */; };
+		27A9729E26F0FE9B0012932D /* HomeContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9729D26F0FE9B0012932D /* HomeContract.swift */; };
 		27A972A026F0FEFE0012932D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9729F26F0FEFE0012932D /* HomeView.swift */; };
 		27A972A226F1049D0012932D /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A972A126F1049D0012932D /* HomeBuilder.swift */; };
 		27A972A426F117250012932D /* UIImageView+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A972A326F117250012932D /* UIImageView+Blur.swift */; };
@@ -73,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		0AC8FE74A761949303315740 /* Pods-FocOn-FocOnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocOn-FocOnUITests.release.xcconfig"; path = "Target Support Files/Pods-FocOn-FocOnUITests/Pods-FocOn-FocOnUITests.release.xcconfig"; sourceTree = "<group>"; };
+		271F33BD270379DA00C02F9C /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		27343F1C26FB35DC00116B19 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		27343F1E26FB35EE00116B19 /* SettingsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContract.swift; sourceTree = "<group>"; };
 		27343F2026FB380800116B19 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		2742313C26F2780300A7162D /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
 		2742313E26F27A0800A7162D /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		2742314026F2802D00A7162D /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
+		275D7BA92705B76F00A8928B /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
+		276CD8EC27077C2B00B6EC58 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		276E453326FC8ACC00C2E944 /* SoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCollectionViewCell.swift; sourceTree = "<group>"; };
 		276E453526FDC78100C2E944 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		27726E8D26FA790800DCFEEB /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -97,7 +103,7 @@
 		27929A4626F32B6C009DF3DD /* FadeInPresentaionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInPresentaionManager.swift; sourceTree = "<group>"; };
 		27929A4826F32E72009DF3DD /* FadeInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInPresentationController.swift; sourceTree = "<group>"; };
 		27929A4A26F32E98009DF3DD /* FadeInPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInPresentationAnimator.swift; sourceTree = "<group>"; };
-		27A9729D26F0FE9B0012932D /* MainScreenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenContract.swift; sourceTree = "<group>"; };
+		27A9729D26F0FE9B0012932D /* HomeContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContract.swift; sourceTree = "<group>"; };
 		27A9729F26F0FEFE0012932D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		27A972A126F1049D0012932D /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		27A972A326F117250012932D /* UIImageView+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Blur.swift"; sourceTree = "<group>"; };
@@ -178,7 +184,7 @@
 		27726E8C26FA785000DCFEEB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				27A9729D26F0FE9B0012932D /* MainScreenContract.swift */,
+				27A9729D26F0FE9B0012932D /* HomeContract.swift */,
 				27A9729F26F0FEFE0012932D /* HomeView.swift */,
 				27A972AB26F1215F0012932D /* HomeViewModel.swift */,
 				27A972A126F1049D0012932D /* HomeBuilder.swift */,
@@ -244,6 +250,7 @@
 		27A9729826F0FE1D0012932D /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				276CD8EC27077C2B00B6EC58 /* AudioPlayer.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -258,6 +265,7 @@
 				27A972A326F117250012932D /* UIImageView+Blur.swift */,
 				27A972A526F118C70012932D /* UIButton+Blur.swift */,
 				27A972A726F11B500012932D /* UIImage+Blur.swift */,
+				271F33BD270379DA00C02F9C /* CustomSlider.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 		27D1C52E26ECE53E00303E68 = {
 			isa = PBXGroup;
 			children = (
+				275D7BA92705B76F00A8928B /* Res */,
 				27D1C53926ECE53E00303E68 /* FocOn */,
 				27D1C55026ECE53F00303E68 /* FocOnTests */,
 				27D1C55B26ECE53F00303E68 /* FocOnUITests */,
@@ -510,6 +519,7 @@
 			files = (
 				27D1C54726ECE53F00303E68 /* LaunchScreen.storyboard in Resources */,
 				27D1C54426ECE53F00303E68 /* Assets.xcassets in Resources */,
+				275D7BAA2705B76F00A8928B /* Res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +693,7 @@
 				27343F1F26FB35EE00116B19 /* SettingsContract.swift in Sources */,
 				27343F1D26FB35DC00116B19 /* SettingsViewModel.swift in Sources */,
 				27929A4B26F32E98009DF3DD /* FadeInPresentationAnimator.swift in Sources */,
+				271F33BE270379DA00C02F9C /* CustomSlider.swift in Sources */,
 				2742313926F2505100A7162D /* ContentSizedTableView.swift in Sources */,
 				27F4FC6F26F4C23C001883B8 /* TransparentTabBarController.swift in Sources */,
 				27929A4926F32E72009DF3DD /* FadeInPresentationController.swift in Sources */,
@@ -699,7 +710,8 @@
 				2742313F26F27A0800A7162D /* SlideInPresentationController.swift in Sources */,
 				27343F2326FB3AF300116B19 /* SettingsBuilder.swift in Sources */,
 				2742312F26F24A1100A7162D /* SettingsTableViewCell.swift in Sources */,
-				27A9729E26F0FE9B0012932D /* MainScreenContract.swift in Sources */,
+				276CD8ED27077C2B00B6EC58 /* AudioPlayer.swift in Sources */,
+				27A9729E26F0FE9B0012932D /* HomeContract.swift in Sources */,
 				276E453626FDC78100C2E944 /* Sound.swift in Sources */,
 				27D1C56C26ECE92900303E68 /* R.generated.swift in Sources */,
 				27929A4726F32B6C009DF3DD /* FadeInPresentaionManager.swift in Sources */,

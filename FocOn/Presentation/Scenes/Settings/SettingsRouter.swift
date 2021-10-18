@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsRouterImpl: SettingsRouter {
-    private let view: UIViewController
+    private weak var view: UIViewController?
 
     init(view: UIViewController) {
         self.view = view

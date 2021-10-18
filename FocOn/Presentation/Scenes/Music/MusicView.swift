@@ -10,23 +10,57 @@ import UIKit
 class MusicView: UIViewController {
     private let titleLabel = UILabel()
 
-    private let flowLayout = UICollectionViewFlowLayout()
-
     private let whiteNoizeContainer = UIView()
     private let whiteNoizeLabel = UILabel()
-    private let whiteNoizeSlider = UISlider()
-    private let whiteNoizeCollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewFlowLayout()
-    )
+    private let whiteNoizeSlider = CustomSlider()
+
+    private var selectedWhiteNoizeIndex: IndexPath?
+
+    lazy var whiteNoizeCollectionView: UICollectionView = {
+        let collectionLayout = UICollectionViewFlowLayout()
+
+        collectionLayout.scrollDirection = .vertical
+        collectionLayout.minimumLineSpacing = 10
+        collectionLayout.minimumInteritemSpacing = 10
+        collectionLayout.itemSize = CGSize(width: 85, height: 85)
+
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
+
+        collection.dataSource = self
+        collection.delegate = self
+        collection.showsVerticalScrollIndicator = false
+        collection.showsHorizontalScrollIndicator = false
+        collection.backgroundColor = .clear
+
+        collection.register(SoundCollectionViewCell.self)
+        return collection
+    }()
 
     private let musicContainer = UIView()
     private let musicLabel = UILabel()
-    private let musicSlider = UISlider()
-    private let musicCollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewFlowLayout()
-    )
+    private let musicSlider = CustomSlider()
+
+    private var selectedMusicIndex: IndexPath?
+
+    lazy var musicCollectionView: UICollectionView = {
+        let collectionLayout = UICollectionViewFlowLayout()
+
+        collectionLayout.scrollDirection = .vertical
+        collectionLayout.minimumLineSpacing = 10
+        collectionLayout.minimumInteritemSpacing = 10
+        collectionLayout.itemSize = CGSize(width: 85, height: 85)
+
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
+
+        collection.dataSource = self
+        collection.delegate = self
+        collection.showsVerticalScrollIndicator = false
+        collection.showsHorizontalScrollIndicator = false
+        collection.backgroundColor = .clear
+
+        collection.register(SoundCollectionViewCell.self)
+        return collection
+    }()
 
     var viewModel: MusicViewModel?
 
@@ -55,7 +89,7 @@ class MusicView: UIViewController {
         whiteNoizeSlider.snp.makeConstraints {
             $0.leading.equalTo(whiteNoizeLabel.snp.trailing).offset(10)
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(whiteNoizeLabel)
+            $0.centerY.equalTo(whiteNoizeLabel)
         }
 
         whiteNoizeContainer.addSubview(whiteNoizeCollectionView)
@@ -83,7 +117,7 @@ class MusicView: UIViewController {
         musicSlider.snp.makeConstraints {
             $0.leading.equalTo(musicLabel.snp.trailing).offset(10)
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(musicLabel)
+            $0.centerY.equalTo(musicLabel)
         }
 
         musicContainer.addSubview(musicCollectionView)
@@ -98,9 +132,12 @@ class MusicView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        viewModel?.fetchMusic()
     }
 
     private func setupUI() {
+        view.backgroundColor = R.color.backgroundColor()
+
         titleLabel.text = "Music"
         titleLabel.font = .systemFont(ofSize: 30, weight: .semibold)
         titleLabel.textAlignment = .left
@@ -108,34 +145,52 @@ class MusicView: UIViewController {
         whiteNoizeLabel.text = "White noize"
         whiteNoizeLabel.font = .systemFont(ofSize: 25, weight: .semibold)
 
-        flowLayout.scrollDirection = .vertical
-        flowLayout.minimumLineSpacing = 10
-        flowLayout.minimumInteritemSpacing = 10
-        flowLayout.itemSize = CGSize(width: 85, height: 85)
-
-        whiteNoizeCollectionView.collectionViewLayout = flowLayout
-        whiteNoizeCollectionView.delegate = self
-        whiteNoizeCollectionView.dataSource = self
-        whiteNoizeCollectionView.register(SoundCollectionViewCell.self)
-        whiteNoizeCollectionView.backgroundColor = .clear
+        whiteNoizeSlider.thumbTintColor = R.color.sliderThumbColor()
+        whiteNoizeSlider.tintColor = .white
+        whiteNoizeSlider.thumbImage(radius: 15)
+        whiteNoizeSlider.value = viewModel?.initialPlayerVolume ?? 0
+        whiteNoizeSlider.addTarget(self, action: #selector(sliderValueChangedAction(_:)), for: .valueChanged)
 
         musicLabel.text = "Music stream"
         musicLabel.font = .systemFont(ofSize: 25, weight: .semibold)
 
-        musicCollectionView.collectionViewLayout = flowLayout
-        musicCollectionView.delegate = self
-        musicCollectionView.dataSource = self
-        musicCollectionView.register(SoundCollectionViewCell.self)
-        musicCollectionView.backgroundColor = .clear
+        musicSlider.thumbTintColor = R.color.sliderThumbColor()
+        musicSlider.tintColor = .white
+        musicSlider.thumbImage(radius: 15)
+        musicSlider.value = viewModel?.initialPlayerVolume ?? 0
+        musicSlider.addTarget(self, action: #selector(sliderValueChangedAction(_:)), for: .valueChanged)
+    }
+
+    @objc
+    private func sliderValueChangedAction(_ sender: UISlider) {
+        if sender == whiteNoizeSlider {
+            viewModel?.setup(volume: sender.value, for: .whiteNoize)
+        } else if sender == musicSlider {
+            viewModel?.setup(volume: sender.value, for: .music)
+        }
     }
 }
 
 extension MusicView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == whiteNoizeCollectionView {
-            viewModel?.whiteNoizeSelected(at: indexPath.row)
+            viewModel?.soundSelected(at: indexPath.row, for: .whiteNoize)
+
+            if selectedWhiteNoizeIndex == indexPath {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                selectedWhiteNoizeIndex = nil
+            } else {
+                selectedWhiteNoizeIndex = indexPath
+            }
         } else if collectionView == musicCollectionView {
-            viewModel?.musicSelected(at: indexPath.row)
+            viewModel?.soundSelected(at: indexPath.row, for: .music)
+            
+            if selectedMusicIndex == indexPath {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                selectedMusicIndex = nil
+            } else {
+                selectedMusicIndex = indexPath
+            }
         }
     }
 }
@@ -144,7 +199,7 @@ extension MusicView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count: Int?
         if collectionView == whiteNoizeCollectionView {
-            count = viewModel?.whiteNoize.count
+            count = viewModel?.whiteNoizes.count
         } else if collectionView == musicCollectionView {
             count = viewModel?.music.count
         }
@@ -155,22 +210,26 @@ extension MusicView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let viewModel = viewModel else { return UICollectionViewCell() }
 
-        var sound = Sound.empty
+        var sound: Sound?
         if collectionView == whiteNoizeCollectionView {
-            sound = viewModel.whiteNoize[indexPath.row]
+            sound = viewModel.whiteNoizes[indexPath.row]
+            let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.setup(title: sound?.title ?? "", imageURL: sound?.image)
+            return cell
         } else if collectionView == musicCollectionView {
             sound = viewModel.music[indexPath.row]
+            let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.setup(title: sound?.title ?? "", imageURL: sound?.image)
+            return cell
         }
 
-        let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.setup(title: sound.title, image: sound.image)
-        return cell
+        return UICollectionViewCell()
     }
 }
 
 extension MusicView: MusicViewModelDelegate {
     func musicReceived() {
-        musicCollectionView.reloadData()
         whiteNoizeCollectionView.reloadData()
+        musicCollectionView.reloadData()
     }
 }

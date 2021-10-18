@@ -20,18 +20,7 @@ class MainScreenView: TransparentTabBarController {
             $0.size.equalTo(40)
         }
         
-        setupViewControllers()
         setupUI()
-    }
-
-    private func setupViewControllers() {
-        let homeView = HomeBuilderImpl().build()
-        homeView.tabBarItem.image = R.image.homeButton()
-
-        let musicView = MusicBuilderImpl().build()
-        musicView.tabBarItem.image = R.image.musicIcon()
-
-        setViewControllers([homeView, musicView])
     }
 
     private func setupUI() {
