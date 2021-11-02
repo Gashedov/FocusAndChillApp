@@ -7,15 +7,16 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 class HomeView: UIViewController {
-    private let imageView = UIImageView()
     private let timerView = UIView()
     private let timerLabel = UILabel()
     private let timerIncreaseButton = UIButton()
     private let timerDecreaseButton = UIButton()
     private let activeUsersView = UIView()
     private let activeUsersLabel = UILabel()
+    private let backgroundAnimatedView = AnimationView()
 
     private var timer: Timer?
     private var totalTime = 0
@@ -26,11 +27,10 @@ class HomeView: UIViewController {
 
     override func loadView() {
         view = UIView()
-
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        
+        view.addSubview(backgroundAnimatedView)
+        backgroundAnimatedView.snp.makeConstraints {
+            $0.top.bottom.left.right.equalToSuperview()
         }
 
         view.addSubview(timerView)
@@ -84,10 +84,13 @@ class HomeView: UIViewController {
         timerView.addGestureRecognizer(timerTapRecognizer)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        backgroundAnimatedView.play()
+    }
+    
     private func setupUI() {
         view.backgroundColor = .lightGray
-
-        // imageView.image = R.image.screenImage()
 
         timerLabel.font = .systemFont(ofSize: 24)
         timerLabel.textAlignment = .center
@@ -109,6 +112,10 @@ class HomeView: UIViewController {
         activeUsersLabel.font = .systemFont(ofSize: 12, weight: .light)
         activeUsersLabel.text = "active users: 123"
         activeUsersLabel.textColor = .lightText
+        
+        backgroundAnimatedView.animation = Animation.named(R.file.martaJson.name)
+        backgroundAnimatedView.loopMode = .loop
+        backgroundAnimatedView.contentMode = .scaleAspectFill
     }
 
     @objc private func changeTimerValue(_ sender: UIButton) {
