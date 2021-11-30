@@ -113,6 +113,7 @@ class HomeView: UIViewController {
 
     @objc private func changeTimerValue(_ sender: UIButton) {
         if sender == timerIncreaseButton {
+            guard totalTime < 10800 else { return }
             totalTime += changesTimeValue
         }
         if sender == timerDecreaseButton {
@@ -156,6 +157,7 @@ class HomeView: UIViewController {
         } else {
             timer?.invalidate()
             timer = nil
+            setTimerValue(360)
         }
     }
 
@@ -164,5 +166,16 @@ class HomeView: UIViewController {
         let minutes: Int = (totalTime / 60) % 60
         let hours: Int = (totalTime / 3600) % 60
         timerLabel.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+
+    private func setTimerValue(_ value: Int) {
+        guard value >= 300, value <= 10800 else { return }
+        totalTime = value
+        updateTimerLabel()
+        timerInitialValue = totalTime
+    }
+
+    private func udpateTimerMode() {
+
     }
 }
