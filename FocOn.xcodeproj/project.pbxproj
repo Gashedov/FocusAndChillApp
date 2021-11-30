@@ -17,6 +17,7 @@
 		27343F2726FB437C00116B19 /* MusicContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F2626FB437C00116B19 /* MusicContract.swift */; };
 		27343F2926FB442B00116B19 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F2826FB442B00116B19 /* MusicViewModel.swift */; };
 		27343F2B26FB453C00116B19 /* MusicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F2A26FB453C00116B19 /* MusicRouter.swift */; };
+		274129362756137E00C0B9ED /* marta.json in Resources */ = {isa = PBXBuildFile; fileRef = 274129352756137E00C0B9ED /* marta.json */; };
 		2742312F26F24A1100A7162D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742312E26F24A1100A7162D /* SettingsTableViewCell.swift */; };
 		2742313126F24A6A00A7162D /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742313026F24A6A00A7162D /* ReuseIdentifiable.swift */; };
 		2742313326F24A9800A7162D /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2742313226F24A9800A7162D /* UITableView+Generics.swift */; };
@@ -85,6 +86,7 @@
 		27343F2626FB437C00116B19 /* MusicContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicContract.swift; sourceTree = "<group>"; };
 		27343F2826FB442B00116B19 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		27343F2A26FB453C00116B19 /* MusicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRouter.swift; sourceTree = "<group>"; };
+		274129352756137E00C0B9ED /* marta.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = marta.json; sourceTree = "<group>"; };
 		2742312E26F24A1100A7162D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		2742313026F24A6A00A7162D /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		2742313226F24A9800A7162D /* UITableView+Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 		27D1C53926ECE53E00303E68 /* FocOn */ = {
 			isa = PBXGroup;
 			children = (
+				274129352756137E00C0B9ED /* marta.json */,
 				27A9729826F0FE1D0012932D /* Service */,
 				27A9729726F0FE180012932D /* Data */,
 				27A9729626F0FE110012932D /* Domain */,
@@ -520,6 +523,7 @@
 				27D1C54726ECE53F00303E68 /* LaunchScreen.storyboard in Resources */,
 				27D1C54426ECE53F00303E68 /* Assets.xcassets in Resources */,
 				275D7BAA2705B76F00A8928B /* Res in Resources */,
+				274129362756137E00C0B9ED /* marta.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
