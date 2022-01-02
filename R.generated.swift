@@ -105,12 +105,20 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 3 colors.
+  /// This `R.color` struct is generated, and contains static references to 7 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `SeaPrimaryColor`.
+    static let seaPrimaryColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SeaPrimaryColor")
     /// Color `backgroundColor`.
     static let backgroundColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "backgroundColor")
+    /// Color `firePrimaryColor`.
+    static let firePrimaryColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "firePrimaryColor")
+    /// Color `forestPrimaryColor`.
+    static let forestPrimaryColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "forestPrimaryColor")
+    /// Color `rainPrimaryColor`.
+    static let rainPrimaryColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "rainPrimaryColor")
     /// Color `sliderThumbColor`.
     static let sliderThumbColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "sliderThumbColor")
 
@@ -124,11 +132,47 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "SeaPrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func seaPrimaryColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.seaPrimaryColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "backgroundColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
     static func backgroundColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.backgroundColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "firePrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func firePrimaryColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.firePrimaryColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "forestPrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func forestPrimaryColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.forestPrimaryColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "rainPrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func rainPrimaryColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.rainPrimaryColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -150,10 +194,42 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "SeaPrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func seaPrimaryColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.seaPrimaryColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "backgroundColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func backgroundColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.backgroundColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "firePrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func firePrimaryColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.firePrimaryColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "forestPrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func forestPrimaryColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.forestPrimaryColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "rainPrimaryColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func rainPrimaryColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.rainPrimaryColor.name)
     }
     #endif
 
@@ -168,16 +244,66 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 12 files.
   struct file {
     /// Resource file `Res`.
     static let res = Rswift.FileResource(bundle: R.hostingBundle, name: "Res", pathExtension: "")
+    /// Resource file `fireChill.json`.
+    static let fireChillJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireChill", pathExtension: "json")
+    /// Resource file `fireDown.json`.
+    static let fireDownJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireDown", pathExtension: "json")
+    /// Resource file `fireFull.json`.
+    static let fireFullJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireFull", pathExtension: "json")
+    /// Resource file `fireUp.json`.
+    static let fireUpJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireUp", pathExtension: "json")
+    /// Resource file `fireWrite.json`.
+    static let fireWriteJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireWrite", pathExtension: "json")
     /// Resource file `marta.json`.
     static let martaJson = Rswift.FileResource(bundle: R.hostingBundle, name: "marta", pathExtension: "json")
+    /// Resource file `rainChill.json`.
+    static let rainChillJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainChill", pathExtension: "json")
+    /// Resource file `rainDown.json`.
+    static let rainDownJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainDown", pathExtension: "json")
+    /// Resource file `rainFull.json`.
+    static let rainFullJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainFull", pathExtension: "json")
+    /// Resource file `rainUp.json`.
+    static let rainUpJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainUp", pathExtension: "json")
+    /// Resource file `rainWrite.json`.
+    static let rainWriteJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainWrite", pathExtension: "json")
 
     /// `bundle.url(forResource: "Res", withExtension: "")`
     static func res(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.res
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "fireChill", withExtension: "json")`
+    static func fireChillJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fireChillJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "fireDown", withExtension: "json")`
+    static func fireDownJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fireDownJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "fireFull", withExtension: "json")`
+    static func fireFullJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fireFullJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "fireUp", withExtension: "json")`
+    static func fireUpJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fireUpJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "fireWrite", withExtension: "json")`
+    static func fireWriteJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.fireWriteJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -187,15 +313,63 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "rainChill", withExtension: "json")`
+    static func rainChillJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rainChillJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "rainDown", withExtension: "json")`
+    static func rainDownJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rainDownJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "rainFull", withExtension: "json")`
+    static func rainFullJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rainFullJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "rainUp", withExtension: "json")`
+    static func rainUpJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rainUpJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "rainWrite", withExtension: "json")`
+    static func rainWriteJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.rainWriteJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 9 images.
+  /// This `R.image` struct is generated, and contains static references to 20 images.
   struct image {
     /// Image `arrowDown`.
     static let arrowDown = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowDown")
     /// Image `arrowUp`.
     static let arrowUp = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowUp")
+    /// Image `classicImage`.
+    static let classicImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "classicImage")
+    /// Image `colorfullFire`.
+    static let colorfullFire = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullFire")
+    /// Image `colorfullForest`.
+    static let colorfullForest = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullForest")
+    /// Image `colorfullRain`.
+    static let colorfullRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullRain")
+    /// Image `colorfullSea`.
+    static let colorfullSea = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullSea")
+    /// Image `colorlessFire`.
+    static let colorlessFire = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorlessFire")
+    /// Image `colorlessForest`.
+    static let colorlessForest = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorlessForest")
+    /// Image `colorlessRain`.
+    static let colorlessRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorlessRain")
+    /// Image `colorlessSea`.
+    static let colorlessSea = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorlessSea")
     /// Image `cross`.
     static let cross = Rswift.ImageResource(bundle: R.hostingBundle, name: "cross")
     /// Image `hamburger`.
@@ -204,6 +378,10 @@ struct R: Rswift.Validatable {
     static let homeButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "homeButton")
     /// Image `iconStub`.
     static let iconStub = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconStub")
+    /// Image `jazzIcon`.
+    static let jazzIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "jazzIcon")
+    /// Image `loFiImage`.
+    static let loFiImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "loFiImage")
     /// Image `musicIcon`.
     static let musicIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "musicIcon")
     /// Image `screenImage`.
@@ -222,6 +400,69 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "arrowUp", bundle: ..., traitCollection: ...)`
     static func arrowUp(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.arrowUp, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "classicImage", bundle: ..., traitCollection: ...)`
+    static func classicImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.classicImage, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorfullFire", bundle: ..., traitCollection: ...)`
+    static func colorfullFire(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorfullFire, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorfullForest", bundle: ..., traitCollection: ...)`
+    static func colorfullForest(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorfullForest, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorfullRain", bundle: ..., traitCollection: ...)`
+    static func colorfullRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorfullRain, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorfullSea", bundle: ..., traitCollection: ...)`
+    static func colorfullSea(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorfullSea, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorlessFire", bundle: ..., traitCollection: ...)`
+    static func colorlessFire(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorlessFire, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorlessForest", bundle: ..., traitCollection: ...)`
+    static func colorlessForest(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorlessForest, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorlessRain", bundle: ..., traitCollection: ...)`
+    static func colorlessRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorlessRain, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "colorlessSea", bundle: ..., traitCollection: ...)`
+    static func colorlessSea(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorlessSea, compatibleWith: traitCollection)
     }
     #endif
 
@@ -250,6 +491,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "iconStub", bundle: ..., traitCollection: ...)`
     static func iconStub(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.iconStub, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "jazzIcon", bundle: ..., traitCollection: ...)`
+    static func jazzIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.jazzIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "loFiImage", bundle: ..., traitCollection: ...)`
+    static func loFiImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.loFiImage, compatibleWith: traitCollection)
     }
     #endif
 

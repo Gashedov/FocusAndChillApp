@@ -18,6 +18,25 @@ class HomeView: UIViewController {
     private let activeUsersLabel = UILabel()
     private let backgroundAnimatedView = AnimationView()
 
+    private let animations = [
+        R.file.rainFullJson.name,
+        R.file.rainChillJson.name,
+        R.file.rainUpJson.name,
+        R.file.rainDownJson.name,
+        R.file.rainWriteJson.name,
+
+        R.file.fireFullJson.name,
+        R.file.fireChillJson.name,
+        R.file.fireUpJson.name,
+        R.file.fireDownJson.name,
+        R.file.fireWriteJson.name,
+
+
+        R.file.martaJson.name
+    ]
+
+    private var index = 0
+
     private var timer: Timer?
     private var totalTime = 0
     private var timerInitialValue = 2700
@@ -86,7 +105,7 @@ class HomeView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        backgroundAnimatedView.play()
+        // backgroundAnimatedView.play()
     }
 
     private func setupUI() {
@@ -109,13 +128,13 @@ class HomeView: UIViewController {
         activeUsersView.backgroundColor = .lightText
         activeUsersView.layer.cornerRadius = 15
 
-        activeUsersLabel.font = .systemFont(ofSize: 12, weight: .light)
+        activeUsersLabel.font = .systemFont(ofSize: 15, weight: .light)
         activeUsersLabel.text = "active users: 123"
-        activeUsersLabel.textColor = .lightText
+        activeUsersLabel.textColor = .black
 
-        backgroundAnimatedView.animation = Animation.named(R.file.martaJson.name)
-        backgroundAnimatedView.loopMode = .loop
-        backgroundAnimatedView.contentMode = .scaleAspectFill
+//        backgroundAnimatedView.animation = Animation.named(R.file.martaJson.name)
+//        backgroundAnimatedView.loopMode = .loop
+//        backgroundAnimatedView.contentMode = .scaleAspectFill
     }
 
     @objc private func changeTimerValue(_ sender: UIButton) {
@@ -132,29 +151,41 @@ class HomeView: UIViewController {
     }
 
     @objc private func startTimer() {
-        if timer == nil {
-            updateTimer()
+        backgroundAnimatedView.animation = Animation.named(animations[index])
+        backgroundAnimatedView.loopMode = .loop
+        backgroundAnimatedView.contentMode = .scaleAspectFill
 
-            timer = Timer.scheduledTimer(
-                timeInterval: 1.0,
-                target: self,
-                selector: #selector(updateTimer),
-                userInfo: nil,
-                repeats: true
-            )
+        activeUsersLabel.text = animations[index]
 
-            timerDecreaseButton.isHidden = true
-            timerIncreaseButton.isHidden = true
-        } else {
-            timer?.invalidate()
-            timer = nil
+        backgroundAnimatedView.play()
 
-            totalTime = timerInitialValue
-            updateTimerLabel()
+        index = index == animations.count - 1 ? 0 : index + 1
 
-            timerDecreaseButton.isHidden = false
-            timerIncreaseButton.isHidden = false
-        }
+
+
+//        if timer == nil {
+//            updateTimer()
+//
+//            timer = Timer.scheduledTimer(
+//                timeInterval: 1.0,
+//                target: self,
+//                selector: #selector(updateTimer),
+//                userInfo: nil,
+//                repeats: true
+//            )
+//
+//            timerDecreaseButton.isHidden = true
+//            timerIncreaseButton.isHidden = true
+//        } else {
+//            timer?.invalidate()
+//            timer = nil
+//
+//            totalTime = timerInitialValue
+//            updateTimerLabel()
+//
+//            timerDecreaseButton.isHidden = false
+//            timerIncreaseButton.isHidden = false
+//        }
     }
 
     @objc private func updateTimer() {

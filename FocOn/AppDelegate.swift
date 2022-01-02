@@ -19,9 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
         window?.makeKeyAndVisible()
 
-        self.window?.rootViewController = MainScreenBuilderImpl().build()
-        self.window?.makeKeyAndVisible()
-        return true
+        //if !UserDefaultsService.shared.didLaunchbefore {
+            self.window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
+            self.window?.makeKeyAndVisible()
+            UserDefaultsService.shared.didLaunchbefore = true
+            return true
+        //}
+
+//        self.window?.rootViewController = MainScreenBuilderImpl().build()
+//        self.window?.makeKeyAndVisible()
+//        return true
     }
 }
 
