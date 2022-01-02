@@ -8,10 +8,10 @@
 import UIKit
 
 class MainScreenBuilderImpl {
-    func build() -> UIViewController {
+    func build(withTheme theme: Theme) -> UIViewController {
         let view = MainScreenView()
 
-        let homeView = HomeBuilderImpl().build()
+        let homeView = HomeBuilderImpl().build(withTheme: theme)
         homeView.tabBarItem.image = R.image.homeButton()
 
         let musicView = MusicBuilderImpl().build()

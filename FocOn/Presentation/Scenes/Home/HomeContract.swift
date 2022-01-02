@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import Lottie
 
 protocol HomeBuilder {
-    func build() -> UIViewController
+    func build(withTheme: Theme) -> UIViewController
 }
 
 protocol HomeViewModel {
-    func showSettings()
+    var animations: [AnimationState: Animation] { get }
+    func fetchThemeAnimations()
 }
 
 protocol HomeRouter {
-    func openSettings()
 }

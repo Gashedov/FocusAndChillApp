@@ -27,6 +27,19 @@ enum Theme: Int {
             return R.color.rainPrimaryColor()
         }
     }
+
+    var animationFolderName: String {
+        switch self {
+        case .rain:
+            return "Rain"
+        case .forest:
+            return "Forest"
+        case .sea:
+            return "Sea"
+        case .fire:
+            return "Fire"
+        }
+    }
 }
 
 

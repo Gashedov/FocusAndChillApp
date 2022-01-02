@@ -28,7 +28,7 @@ class OnboardingViewModelImpl: OnboardingViewModel {
     }
 
     func moveToMainScreen() {
-        router.moveToMainScreen()
+        router.moveToMainScreen(withTheme: currentTheme)
     }
 
     //MARK: - Private methods

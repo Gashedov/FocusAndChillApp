@@ -20,7 +20,7 @@ protocol OnboardingBuilder {
 }
 
 protocol OnboardingRouter {
-    func moveToMainScreen()
+    func moveToMainScreen(withTheme theme: Theme)
 }
 
 protocol OnboardingViewModelDelegate: AnyObject {

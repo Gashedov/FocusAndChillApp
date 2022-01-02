@@ -244,102 +244,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 12 files.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
     /// Resource file `Res`.
     static let res = Rswift.FileResource(bundle: R.hostingBundle, name: "Res", pathExtension: "")
-    /// Resource file `fireChill.json`.
-    static let fireChillJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireChill", pathExtension: "json")
-    /// Resource file `fireDown.json`.
-    static let fireDownJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireDown", pathExtension: "json")
-    /// Resource file `fireFull.json`.
-    static let fireFullJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireFull", pathExtension: "json")
-    /// Resource file `fireUp.json`.
-    static let fireUpJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireUp", pathExtension: "json")
-    /// Resource file `fireWrite.json`.
-    static let fireWriteJson = Rswift.FileResource(bundle: R.hostingBundle, name: "fireWrite", pathExtension: "json")
-    /// Resource file `marta.json`.
-    static let martaJson = Rswift.FileResource(bundle: R.hostingBundle, name: "marta", pathExtension: "json")
-    /// Resource file `rainChill.json`.
-    static let rainChillJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainChill", pathExtension: "json")
-    /// Resource file `rainDown.json`.
-    static let rainDownJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainDown", pathExtension: "json")
-    /// Resource file `rainFull.json`.
-    static let rainFullJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainFull", pathExtension: "json")
-    /// Resource file `rainUp.json`.
-    static let rainUpJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainUp", pathExtension: "json")
-    /// Resource file `rainWrite.json`.
-    static let rainWriteJson = Rswift.FileResource(bundle: R.hostingBundle, name: "rainWrite", pathExtension: "json")
 
     /// `bundle.url(forResource: "Res", withExtension: "")`
     static func res(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.res
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "fireChill", withExtension: "json")`
-    static func fireChillJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.fireChillJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "fireDown", withExtension: "json")`
-    static func fireDownJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.fireDownJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "fireFull", withExtension: "json")`
-    static func fireFullJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.fireFullJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "fireUp", withExtension: "json")`
-    static func fireUpJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.fireUpJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "fireWrite", withExtension: "json")`
-    static func fireWriteJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.fireWriteJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "marta", withExtension: "json")`
-    static func martaJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.martaJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "rainChill", withExtension: "json")`
-    static func rainChillJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.rainChillJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "rainDown", withExtension: "json")`
-    static func rainDownJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.rainDownJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "rainFull", withExtension: "json")`
-    static func rainFullJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.rainFullJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "rainUp", withExtension: "json")`
-    static func rainUpJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.rainUpJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "rainWrite", withExtension: "json")`
-    static func rainWriteJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.rainWriteJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 

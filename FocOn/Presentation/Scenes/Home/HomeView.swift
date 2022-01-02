@@ -14,26 +14,7 @@ class HomeView: UIViewController {
     private let timerLabel = UILabel()
     private let timerIncreaseButton = UIButton()
     private let timerDecreaseButton = UIButton()
-    private let activeUsersView = UIView()
-    private let activeUsersLabel = UILabel()
     private let backgroundAnimatedView = AnimationView()
-
-    private let animations = [
-        R.file.rainFullJson.name,
-        R.file.rainChillJson.name,
-        R.file.rainUpJson.name,
-        R.file.rainDownJson.name,
-        R.file.rainWriteJson.name,
-
-        R.file.fireFullJson.name,
-        R.file.fireChillJson.name,
-        R.file.fireUpJson.name,
-        R.file.fireDownJson.name,
-        R.file.fireWriteJson.name,
-
-
-        R.file.martaJson.name
-    ]
 
     private var index = 0
 
@@ -77,24 +58,12 @@ class HomeView: UIViewController {
             $0.trailing.top.bottom.equalToSuperview()
             $0.size.equalTo(40)
         }
-
-        view.addSubview(activeUsersView)
-        activeUsersView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(10)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.width.equalTo(120)
-            $0.height.equalTo(30)
-        }
-
-        view.addSubview(activeUsersLabel)
-        activeUsersLabel.snp.makeConstraints {
-            $0.leading.equalTo(activeUsersView).offset(6)
-            $0.top.equalTo(activeUsersView.snp.bottom).offset(4)
-        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.fetchThemeAnimations()
+
         setupUI()
 
         totalTime = timerInitialValue
@@ -105,7 +74,7 @@ class HomeView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // backgroundAnimatedView.play()
+        backgroundAnimatedView.play(completion: nil)
     }
 
     private func setupUI() {
@@ -125,16 +94,9 @@ class HomeView: UIViewController {
         timerDecreaseButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 0)
         timerDecreaseButton.addTarget(self, action: #selector(changeTimerValue), for: .touchUpInside)
 
-        activeUsersView.backgroundColor = .lightText
-        activeUsersView.layer.cornerRadius = 15
-
-        activeUsersLabel.font = .systemFont(ofSize: 15, weight: .light)
-        activeUsersLabel.text = "active users: 123"
-        activeUsersLabel.textColor = .black
-
-//        backgroundAnimatedView.animation = Animation.named(R.file.martaJson.name)
-//        backgroundAnimatedView.loopMode = .loop
-//        backgroundAnimatedView.contentMode = .scaleAspectFill
+        backgroundAnimatedView.animation = viewModel?.animations[.full]
+        backgroundAnimatedView.loopMode = .loop
+        backgroundAnimatedView.contentMode = .scaleAspectFill
     }
 
     @objc private func changeTimerValue(_ sender: UIButton) {
@@ -151,41 +113,29 @@ class HomeView: UIViewController {
     }
 
     @objc private func startTimer() {
-        backgroundAnimatedView.animation = Animation.named(animations[index])
-        backgroundAnimatedView.loopMode = .loop
-        backgroundAnimatedView.contentMode = .scaleAspectFill
+        if timer == nil {
+            updateTimer()
 
-        activeUsersLabel.text = animations[index]
+            timer = Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(updateTimer),
+                userInfo: nil,
+                repeats: true
+            )
 
-        backgroundAnimatedView.play()
+            timerDecreaseButton.isHidden = true
+            timerIncreaseButton.isHidden = true
+        } else {
+            timer?.invalidate()
+            timer = nil
 
-        index = index == animations.count - 1 ? 0 : index + 1
+            totalTime = timerInitialValue
+            updateTimerLabel()
 
-
-
-//        if timer == nil {
-//            updateTimer()
-//
-//            timer = Timer.scheduledTimer(
-//                timeInterval: 1.0,
-//                target: self,
-//                selector: #selector(updateTimer),
-//                userInfo: nil,
-//                repeats: true
-//            )
-//
-//            timerDecreaseButton.isHidden = true
-//            timerIncreaseButton.isHidden = true
-//        } else {
-//            timer?.invalidate()
-//            timer = nil
-//
-//            totalTime = timerInitialValue
-//            updateTimerLabel()
-//
-//            timerDecreaseButton.isHidden = false
-//            timerIncreaseButton.isHidden = false
-//        }
+            timerDecreaseButton.isHidden = false
+            timerIncreaseButton.isHidden = false
+        }
     }
 
     @objc private func updateTimer() {

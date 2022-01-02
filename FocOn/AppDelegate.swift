@@ -17,15 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        if !UserDefaultsService.shared.didLaunchbefore {
+//        if !UserDefaultsService.shared.didLaunchbefore {
             window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
             window?.makeKeyAndVisible()
             UserDefaultsService.shared.didLaunchbefore = true
             return true
-        }
-
-        window?.rootViewController = MainScreenBuilderImpl().build()
-        window?.makeKeyAndVisible()
+//        }
+//
+//        let currentTheme = Theme(rawValue: UserDefaultsService.shared.currentThemeCode) ?? .forest
+//        window?.rootViewController = MainScreenBuilderImpl().build(withTheme: currentTheme)
+//        window?.makeKeyAndVisible()
         return true
     }
 }

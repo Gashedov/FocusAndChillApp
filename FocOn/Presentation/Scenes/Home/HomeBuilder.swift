@@ -8,10 +8,13 @@
 import UIKit
 
 class HomeBuilderImpl: HomeBuilder {
-    func build() -> UIViewController {
+    func build(withTheme theme: Theme) -> UIViewController {
         let view = HomeView()
         let router = HomeRouterImpl(view: view)
-        let viewModel = HomeViewModelImpl(router: router)
+        let viewModel = HomeViewModelImpl(
+            router: router,
+            theme: theme
+        )
         view.viewModel = viewModel
         return view
     }
