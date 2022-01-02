@@ -16,19 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
 
-        //if !UserDefaultsService.shared.didLaunchbefore {
-            self.window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
-            self.window?.makeKeyAndVisible()
+        if !UserDefaultsService.shared.didLaunchbefore {
+            window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
+            window?.makeKeyAndVisible()
             UserDefaultsService.shared.didLaunchbefore = true
             return true
-        //}
+        }
 
-//        self.window?.rootViewController = MainScreenBuilderImpl().build()
-//        self.window?.makeKeyAndVisible()
-//        return true
+        window?.rootViewController = MainScreenBuilderImpl().build()
+        window?.makeKeyAndVisible()
+        return true
     }
 }
 
