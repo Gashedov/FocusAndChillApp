@@ -13,18 +13,19 @@ enum SoundType {
 }
 
 protocol MusicBuilder {
-    func build() -> UIViewController
+    func build(withDelegate: MainScreenDelegate) -> UIViewController
 }
 
 protocol MusicViewModel {
-    var music: [Sound] { get }
-    var whiteNoizes: [Sound] { get }
+    var theme: Theme { get }
+    var music: [SoundModel] { get }
+    var whiteNoizes: [SoundModel] { get }
     var delegate: MusicViewModelDelegate? { get set }
     var initialPlayerVolume: Float { get }
     
-    func soundSelected(at: Int, for: SoundType)
+    func soundSelected(at: Int, type: SoundType)
+    func soundDeselected(type: SoundType)
     func setup(volume: Float, for: SoundType)
-    func fetchMusic()
 }
 
 protocol MusicViewModelDelegate {

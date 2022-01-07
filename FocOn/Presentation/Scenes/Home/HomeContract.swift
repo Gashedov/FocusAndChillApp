@@ -9,12 +9,13 @@ import UIKit
 import Lottie
 
 protocol HomeBuilder {
-    func build(withTheme: Theme) -> UIViewController
+    func build() -> UIViewController
 }
 
 protocol HomeViewModel {
     var animations: [AnimationState: Animation] { get }
     func fetchThemeAnimations()
+    func updateAnimations()
 }
 
 protocol HomeRouter {

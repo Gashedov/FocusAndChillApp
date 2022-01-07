@@ -18,14 +18,14 @@ class BoardViewController: UIViewController {
     )
 
     private var callback: ((Int) -> Void)?
-    private var items: [OnboardingOption]
+    private var items: [SoundModel]
     private var theme: Theme
 
     var preselectedItemIndex: Int? = nil
 
     init(
         theme: Theme,
-        items: [OnboardingOption],
+        items: [SoundModel],
         callback: ((Int) -> Void)? = nil
     ) {
         self.callback = callback
@@ -160,8 +160,8 @@ extension BoardViewController: UICollectionViewDataSource {
         let item = items[indexPath.item]
         cell.setup(
             title: item.title,
-            image: item.image,
-            highlightedImage: item.highlightedImage,
+            image: item.onboardingImage,
+            highlightedImage: item.selectedOnboardingImage,
             primaryColor: theme.primaryColor
         )
         return cell

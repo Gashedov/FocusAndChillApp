@@ -67,7 +67,7 @@ class OnboardingView: UIPageViewController {
 
         let musicViewController = BoardViewController(
             theme: viewModel.currentTheme,
-            items: [.loFi, .jazz, .classic],
+            items: [MusicItem.loFi, MusicItem.jazz, MusicItem.classic],
             callback: { _ in
                 viewModel.moveToMainScreen()
             })
@@ -77,7 +77,7 @@ class OnboardingView: UIPageViewController {
 
         let whiteNoizesViewController = BoardViewController(
             theme: viewModel.currentTheme,
-            items: [.rain, .forest, .sea, .fire],
+            items: [WhiteNoizeItem.rain, WhiteNoizeItem.forest, WhiteNoizeItem.sea, WhiteNoizeItem.fire],
             callback: { [unowned self] index in
                 guard let theme = Theme(rawValue: index) else { return }
                 self.view.backgroundColor = theme.primaryColor

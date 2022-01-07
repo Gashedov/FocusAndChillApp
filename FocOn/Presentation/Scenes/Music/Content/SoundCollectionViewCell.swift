@@ -8,8 +8,11 @@
 import UIKit
 
 class SoundCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
+    private let coloredView = UIView()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
+
+    private var primaryColor: UIColor?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,8 +20,18 @@ class SoundCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(40)
+            $0.size.equalTo(50)
         }
+
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .white
+
+        contentView.insertSubview(coloredView, belowSubview: imageView)
+        coloredView.snp.makeConstraints {
+            $0.edges.equalTo(imageView)
+        }
+
+        coloredView.layer.cornerRadius = 25
 
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
@@ -43,36 +56,48 @@ class SoundCollectionViewCell: UICollectionViewCell, ReuseIdentifiable {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                titleLabel.textColor = R.color.sliderThumbColor()
+                titleLabel.textColor = primaryColor
+                coloredView.backgroundColor = primaryColor
             } else {
-                titleLabel.textColor = .black
+                titleLabel.textColor = primaryColor?.withAlphaComponent(0.5)
+                coloredView.backgroundColor = primaryColor?.withAlphaComponent(0.5)
             }
         }
     }
 
-    func setup(title: String, imageURL: URL?) {
+    func setup(
+        title: String,
+        image: UIImage?,
+        primaryColor: UIColor?,
+        selected: Bool
+    ) {
         titleLabel.text = title
-        imageView.image = drawPDFfromURL(url: imageURL)
+        imageView.image = image?.withAlignmentRectInsets(UIEdgeInsets(top: -8, left: -8, bottom: -8, right: -8))
+
+        titleLabel.textColor = selected ? primaryColor : primaryColor?.withAlphaComponent(0.5)
+        coloredView.backgroundColor = selected ? primaryColor : primaryColor?.withAlphaComponent(0.5)
+
+        self.primaryColor = primaryColor
     }
 
-    func drawPDFfromURL(url: URL?) -> UIImage? {
-        guard let url = url else { return nil }
-        guard let document = CGPDFDocument(url as CFURL) else { return nil }
-        guard let page = document.page(at: 1) else { return nil }
-
-        let pageRect =  page.getBoxRect(.artBox)
-        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
-        let image = renderer.image { context in
-            UIColor.clear.set()
-            context.fill(pageRect)
-
-            context.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
-            context.cgContext.scaleBy(x: 1.0, y: -1.0)
-
-            context.cgContext.drawPDFPage(page)
-        }
-
-        return image
-    }
+//    func drawPDFfromURL(url: URL?) -> UIImage? {
+//        guard let url = url else { return nil }
+//        guard let document = CGPDFDocument(url as CFURL) else { return nil }
+//        guard let page = document.page(at: 1) else { return nil }
+//
+//        let pageRect =  page.getBoxRect(.artBox)
+//        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+//        let image = renderer.image { context in
+//            UIColor.clear.set()
+//            context.fill(pageRect)
+//
+//            context.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+//            context.cgContext.scaleBy(x: 1.0, y: -1.0)
+//
+//            context.cgContext.drawPDFPage(page)
+//        }
+//
+//        return image
+//    }
 }
 

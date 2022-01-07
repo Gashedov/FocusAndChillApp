@@ -44,6 +44,10 @@ class AudioPlayer {
         }
     }
 
+    func pause() {
+        player?.pause()
+    }
+
     private func doPlay(for url: URL) {
         NotificationCenter.default.removeObserver(self)
 

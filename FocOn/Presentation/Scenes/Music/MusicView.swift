@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MusicView: UIViewController {
+class MusicView: UIViewController, TabController {
     private let titleLabel = UILabel()
 
     private let whiteNoizeContainer = UIView()
@@ -132,33 +132,52 @@ class MusicView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        viewModel?.fetchMusic()
     }
 
     private func setupUI() {
+        guard let viewModel = viewModel else {
+            return
+        }
+
         view.backgroundColor = R.color.backgroundColor()
 
         titleLabel.text = "Music"
         titleLabel.font = .systemFont(ofSize: 30, weight: .semibold)
         titleLabel.textAlignment = .left
+        titleLabel.textColor = viewModel.theme.primaryColor
 
         whiteNoizeLabel.text = "White noize"
         whiteNoizeLabel.font = .systemFont(ofSize: 25, weight: .semibold)
+        whiteNoizeLabel.textColor = viewModel.theme.primaryColor
 
-        whiteNoizeSlider.thumbTintColor = R.color.sliderThumbColor()
-        whiteNoizeSlider.tintColor = .white
+        whiteNoizeSlider.thumbTintColor = viewModel.theme.primaryColor
+        whiteNoizeSlider.tintColor = viewModel.theme.primaryColor
         whiteNoizeSlider.thumbImage(radius: 15)
-        whiteNoizeSlider.value = viewModel?.initialPlayerVolume ?? 0
+        whiteNoizeSlider.value = viewModel.initialPlayerVolume
         whiteNoizeSlider.addTarget(self, action: #selector(sliderValueChangedAction(_:)), for: .valueChanged)
 
         musicLabel.text = "Music stream"
         musicLabel.font = .systemFont(ofSize: 25, weight: .semibold)
+        musicLabel.textColor = viewModel.theme.primaryColor
 
-        musicSlider.thumbTintColor = R.color.sliderThumbColor()
-        musicSlider.tintColor = .white
+        musicSlider.thumbTintColor = viewModel.theme.primaryColor
+        musicSlider.tintColor = viewModel.theme.primaryColor
         musicSlider.thumbImage(radius: 15)
-        musicSlider.value = viewModel?.initialPlayerVolume ?? 0
+        musicSlider.value = viewModel.initialPlayerVolume
         musicSlider.addTarget(self, action: #selector(sliderValueChangedAction(_:)), for: .valueChanged)
+    }
+
+    func updateUI() {
+        titleLabel.textColor = viewModel?.theme.primaryColor
+        whiteNoizeLabel.textColor = viewModel?.theme.primaryColor
+        whiteNoizeSlider.thumbTintColor = viewModel?.theme.primaryColor
+        whiteNoizeSlider.tintColor = viewModel?.theme.primaryColor
+        musicLabel.textColor = viewModel?.theme.primaryColor
+        musicSlider.thumbTintColor = viewModel?.theme.primaryColor
+        musicSlider.tintColor = viewModel?.theme.primaryColor
+
+        musicCollectionView.reloadData()
+        whiteNoizeCollectionView.reloadData()
     }
 
     @objc
@@ -174,22 +193,23 @@ class MusicView: UIViewController {
 extension MusicView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == whiteNoizeCollectionView {
-            viewModel?.soundSelected(at: indexPath.row, for: .whiteNoize)
-
             if selectedWhiteNoizeIndex == indexPath {
                 collectionView.deselectItem(at: indexPath, animated: true)
                 selectedWhiteNoizeIndex = nil
+                viewModel?.soundDeselected(type: .whiteNoize)
             } else {
                 selectedWhiteNoizeIndex = indexPath
+                viewModel?.soundSelected(at: indexPath.row, type: .whiteNoize)
             }
-        } else if collectionView == musicCollectionView {
-            viewModel?.soundSelected(at: indexPath.row, for: .music)
             
+        } else if collectionView == musicCollectionView {
             if selectedMusicIndex == indexPath {
                 collectionView.deselectItem(at: indexPath, animated: true)
                 selectedMusicIndex = nil
+                viewModel?.soundDeselected(type: .music)
             } else {
                 selectedMusicIndex = indexPath
+                viewModel?.soundSelected(at: indexPath.row, type: .music)
             }
         }
     }
@@ -207,23 +227,36 @@ extension MusicView: UICollectionViewDataSource {
         return count ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let viewModel = viewModel else { return UICollectionViewCell() }
 
-        var sound: Sound?
+        var resultCell = UICollectionViewCell()
         if collectionView == whiteNoizeCollectionView {
-            sound = viewModel.whiteNoizes[indexPath.row]
+            let sound = viewModel.whiteNoizes[indexPath.row]
             let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setup(title: sound?.title ?? "", imageURL: sound?.image)
-            return cell
+            cell.setup(
+                title: sound.title,
+                image: sound.icon,
+                primaryColor: viewModel.theme.primaryColor ?? .white,
+                selected: indexPath == selectedWhiteNoizeIndex
+            )
+            resultCell = cell
         } else if collectionView == musicCollectionView {
-            sound = viewModel.music[indexPath.row]
+            let sound = viewModel.music[indexPath.row]
             let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setup(title: sound?.title ?? "", imageURL: sound?.image)
-            return cell
+            cell.setup(
+                title: sound.title,
+                image: sound.icon,
+                primaryColor: viewModel.theme.primaryColor ?? .white,
+                selected: indexPath == selectedMusicIndex
+            )
+            resultCell = cell
         }
 
-        return UICollectionViewCell()
+        return resultCell
     }
 }
 

@@ -1,21 +1,17 @@
 //
-//  OnboardingItem.swift
+//  WhiteNoiseItem.swift
 //  FocOn
 //
-//  Created by Artem Gorshkov on 26.12.21.
+//  Created by Artem Gorshkov on 4.01.22.
 //
 
 import UIKit
 
-enum OnboardingOption: Int {
+enum WhiteNoizeItem: Int, SoundModel, CaseIterable {
     case rain
     case forest
     case sea
     case fire
-
-    case jazz
-    case loFi
-    case classic
 
     var title: String {
         switch self {
@@ -27,16 +23,10 @@ enum OnboardingOption: Int {
             return "Sea"
         case .fire:
             return "Fire"
-        case .jazz:
-            return "Jazz"
-        case .loFi:
-            return "Lo-Fi"
-        case .classic:
-            return "Classic"
         }
     }
 
-    var image: UIImage? {
+    var onboardingImage: UIImage? {
         switch self {
         case .rain:
             return R.image.colorlessRain()
@@ -46,16 +36,10 @@ enum OnboardingOption: Int {
             return R.image.colorlessSea()
         case .fire:
             return R.image.colorlessFire()
-        case .jazz:
-            return R.image.jazzIcon()
-        case .loFi:
-            return R.image.loFiImage()
-        case .classic:
-            return R.image.classicImage()
         }
     }
 
-    var highlightedImage: UIImage? {
+    var selectedOnboardingImage: UIImage? {
         switch self {
         case .rain:
             return R.image.colorfullRain()
@@ -65,9 +49,32 @@ enum OnboardingOption: Int {
             return R.image.colorfullSea()
         case .fire:
             return R.image.colorfullFire()
-        default:
-            return nil
         }
     }
 
+    var icon: UIImage? {
+        switch self {
+        case .rain:
+            return R.image.rainIcon()
+        case .forest:
+            return R.image.forestIcon()
+        case .sea:
+            return R.image.seaIcon()
+        case .fire:
+            return R.image.fireIcon()
+        }
+    }
+
+    var soundUrlString: String {
+        switch self {
+        case .rain:
+            return "Res/Sounds/WhiteNoizes/Rain/Rain.mp3"
+        case .forest:
+            return ""
+        case .sea:
+            return "Res/Sounds/WhiteNoizes/Ocean/Ocean.mp3"
+        case .fire:
+            return "Res/Sounds/WhiteNoizes/Fire/Fire.mp3"
+        }
+    }
 }

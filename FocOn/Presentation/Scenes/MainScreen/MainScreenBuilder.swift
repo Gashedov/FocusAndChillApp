@@ -8,13 +8,13 @@
 import UIKit
 
 class MainScreenBuilderImpl {
-    func build(withTheme theme: Theme) -> UIViewController {
+    func build() -> UIViewController {
         let view = MainScreenView()
 
-        let homeView = HomeBuilderImpl().build(withTheme: theme)
+        let homeView = HomeBuilderImpl().build()
         homeView.tabBarItem.image = R.image.homeButton()
 
-        let musicView = MusicBuilderImpl().build()
+        let musicView = MusicBuilderImpl().build(withDelegate: view)
         musicView.tabBarItem.image = R.image.musicIcon()
 
         view.setViewControllers([homeView, musicView])

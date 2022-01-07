@@ -15,6 +15,6 @@ class OnboardingRouterImpl: OnboardingRouter {
     }
 
     func moveToMainScreen(withTheme theme: Theme) {
-        view?.navigationController?.viewControllers = [MainScreenBuilderImpl().build(withTheme: theme)]
+        view?.navigationController?.viewControllers = [MainScreenBuilderImpl().build()]
     }
 }

@@ -10,44 +10,35 @@ import Lottie
 
 class HomeViewModelImpl: HomeViewModel {
     private let router: HomeRouter
-    private var theme: Theme
+    private var theme: Theme {
+        let code = UserDefaultsService.shared.currentThemeCode
+        return Theme(rawValue: code) ?? .forest
+    }
 
     var animations: [AnimationState: Animation] = [:]
 
-    init(
-        router: HomeRouter,
-         theme: Theme
-    ) {
+    init(router: HomeRouter) {
         self.router = router
-        self.theme = theme
     }
 
     func fetchThemeAnimations() {
         animations = fetchAnimations(named: theme.animationFolderName)
     }
-    
+
+    func updateAnimations() {
+        fetchThemeAnimations()
+    }
+
     private func fetchAnimations(named: String) -> [AnimationState: Animation] {
-        let fileManager = FileManager.default
         guard let boundleUrl = Bundle.main.resourceURL else { return [:] }
-
-        let folderURL = boundleUrl.appendingPathComponent("Res/Animations")
-        let resourceURL = folderURL.appendingPathComponent(named)
-
-        let resourceContent = (try? fileManager.contentsOfDirectory(
-            at: resourceURL,
-            includingPropertiesForKeys: nil
-        )) ?? []
+        let folderURL = boundleUrl.appendingPathComponent("Res/Animations/\(named)")
 
         var result: [AnimationState: Animation] = [:]
 
-        resourceContent.forEach { path in
-            let pathString = path.relativePath
-            let states = AnimationState.allCases
-            states.forEach { state in
-                if pathString.contains(state.rawValue) {
-                    result[state] = Animation.filepath(pathString, animationCache: nil)
-                }
-            }
+        let states = AnimationState.allCases
+        states.forEach { state in
+            let pathUrl = folderURL.appendingPathComponent("\(state.rawValue).json")
+            result[state] = Animation.filepath(pathUrl.relativePath, animationCache: nil)
         }
         return result
     }

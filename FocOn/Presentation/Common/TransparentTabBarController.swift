@@ -12,7 +12,7 @@ class TransparentTabBarController: UIViewController {
     private let tabBarView = UIView()
     private let buttonStackView = UIStackView()
 
-    private var viewControllers: [UIViewController] = []
+    var viewControllers: [UIViewController] = []
     private var selectedIndex = 0
 
     // MARK: - Life cucle methods
