@@ -44,6 +44,11 @@ class SettingsView: UIViewController {
         setupUI()
         bindViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Track.didShow(screen: .settings)
+    }
 
     //MARK: - Private methods
 

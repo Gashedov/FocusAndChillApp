@@ -47,6 +47,7 @@ class MainScreenView: TransparentTabBarController {
 
     @objc
     private func settingsButtonAction() {
+        Track.action(.mainSettings)
         let settingsView = SettingsBuilderImpl().build()
         settingsView.modalPresentationStyle = .custom
         settingsView.modalTransitionStyle = .crossDissolve
@@ -55,6 +56,7 @@ class MainScreenView: TransparentTabBarController {
 
     @objc
     private func timerButtonAction() {
+        Track.action(.mainTimer)
     }
 }
 

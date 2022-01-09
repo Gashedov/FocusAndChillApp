@@ -244,10 +244,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
+    /// Resource file `GoogleService-Info.plist`.
+    static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
     /// Resource file `Res`.
     static let res = Rswift.FileResource(bundle: R.hostingBundle, name: "Res", pathExtension: "")
+
+    /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
+    static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.googleServiceInfoPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "Res", withExtension: "")`
     static func res(_: Void = ()) -> Foundation.URL? {
@@ -260,6 +268,8 @@ struct R: Rswift.Validatable {
 
   /// This `R.image` struct is generated, and contains static references to 25 images.
   struct image {
+    /// Image `ColorfullRain`.
+    static let colorfullRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "ColorfullRain")
     /// Image `arrowDown`.
     static let arrowDown = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowDown")
     /// Image `arrowUp`.
@@ -270,8 +280,6 @@ struct R: Rswift.Validatable {
     static let colorfullFire = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullFire")
     /// Image `colorfullForest`.
     static let colorfullForest = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullForest")
-    /// Image `colorfullRain`.
-    static let colorfullRain = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullRain")
     /// Image `colorfullSea`.
     static let colorfullSea = Rswift.ImageResource(bundle: R.hostingBundle, name: "colorfullSea")
     /// Image `colorlessFire`.
@@ -312,6 +320,13 @@ struct R: Rswift.Validatable {
     static let timerIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "timerIcon")
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ColorfullRain", bundle: ..., traitCollection: ...)`
+    static func colorfullRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.colorfullRain, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "arrowDown", bundle: ..., traitCollection: ...)`
     static func arrowDown(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.arrowDown, compatibleWith: traitCollection)
@@ -343,13 +358,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "colorfullForest", bundle: ..., traitCollection: ...)`
     static func colorfullForest(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.colorfullForest, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "colorfullRain", bundle: ..., traitCollection: ...)`
-    static func colorfullRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.colorfullRain, compatibleWith: traitCollection)
     }
     #endif
 

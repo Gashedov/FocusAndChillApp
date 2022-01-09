@@ -24,6 +24,11 @@ class OnboardingView: UIPageViewController {
         addSubviews()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Track.didShow(screen: .onboard)
+    }
 
     //MARK: - Private methods
     private func addSubviews() {
@@ -68,7 +73,10 @@ class OnboardingView: UIPageViewController {
         let musicViewController = BoardViewController(
             theme: viewModel.currentTheme,
             items: [MusicItem.loFi, MusicItem.jazz, MusicItem.classic],
-            callback: { _ in
+            callback: { index in
+                guard let music = MusicItem(rawValue: index) else { return }
+                Track.action(.onboardSelectMusic(value: music))
+                
                 viewModel.moveToMainScreen()
             })
         
@@ -80,6 +88,8 @@ class OnboardingView: UIPageViewController {
             items: [WhiteNoizeItem.rain, WhiteNoizeItem.forest, WhiteNoizeItem.sea, WhiteNoizeItem.fire],
             callback: { [unowned self] index in
                 guard let theme = Theme(rawValue: index) else { return }
+                Track.action(.onboardSelectTheme(value: theme))
+                
                 self.view.backgroundColor = theme.primaryColor
                 musicViewController.changeTheme(to: theme)
                 viewModel.changeTheme(to: theme)

@@ -133,6 +133,11 @@ class MusicView: UIViewController, TabController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Track.didShow(screen: .music)
+    }
 
     private func setupUI() {
         guard let viewModel = viewModel else {
@@ -200,6 +205,7 @@ extension MusicView: UICollectionViewDelegate {
             } else {
                 selectedWhiteNoizeIndex = indexPath
                 viewModel?.soundSelected(at: indexPath.row, type: .whiteNoize)
+                Track.action(.musicSelectNoise(value: WhiteNoizeItem(rawValue: indexPath.row)))
             }
             
         } else if collectionView == musicCollectionView {
@@ -210,6 +216,7 @@ extension MusicView: UICollectionViewDelegate {
             } else {
                 selectedMusicIndex = indexPath
                 viewModel?.soundSelected(at: indexPath.row, type: .music)
+                Track.action(.musicSelectMusic(value: MusicItem(rawValue: indexPath.row)))
             }
         }
     }

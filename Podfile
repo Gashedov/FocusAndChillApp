@@ -5,7 +5,7 @@ target 'FocOn' do
   pod 'lottie-ios', '3.2.3'
   pod 'Moya', '14.0.0'
   pod 'R.swift', '5.4.0'
-
+  pod 'Firebase/Analytics', '~> 8.10.0'
 
   target 'FocOnTests' do
 

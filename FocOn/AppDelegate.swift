@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,18 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        FirebaseApp.configure()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-
-//        if !UserDefaultsService.shared.didLaunchbefore {
-            window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
-            window?.makeKeyAndVisible()
-            UserDefaultsService.shared.didLaunchbefore = true
-            return true
-//        }
-//
-//        let currentTheme = Theme(rawValue: UserDefaultsService.shared.currentThemeCode) ?? .forest
-//        window?.rootViewController = MainScreenBuilderImpl().build(withTheme: currentTheme)
-//        window?.makeKeyAndVisible()
+        
+        window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
+        window?.makeKeyAndVisible()
+        UserDefaultsService.shared.didLaunchbefore = true
         return true
     }
 }

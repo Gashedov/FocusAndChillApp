@@ -38,6 +38,7 @@ class HomeView: UIViewController, TabController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Track.didShow(screen: .home)
         backgroundAnimatedView.play(completion: nil)
     }
 
