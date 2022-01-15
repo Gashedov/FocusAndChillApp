@@ -57,6 +57,9 @@ class MainScreenView: TransparentTabBarController {
     @objc
     private func timerButtonAction() {
         Track.action(.mainTimer)
+        
+        let builder = TimerSelectorViewControllerBuilder()
+        present(builder.build(), animated: true, completion: nil)
     }
 }
 

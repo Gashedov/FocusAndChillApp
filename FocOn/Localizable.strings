@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  FocOn
+
+  Created by Nikita Zhukov on 15.01.2022.
+  
+*/
+
+"popup.timer.title" = "Timer";
+"popup.timer.start" = "Start";
+"popup.timer.restTime.title" = "Rest time";
+"popup.timer.restTime.value" = "+%@ min";

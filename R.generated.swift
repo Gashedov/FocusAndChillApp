@@ -89,10 +89,12 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    /// Storyboard `TimerSelectorViewController`.
+    static let timerSelectorViewController = _R.storyboard.timerSelectorViewController()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -101,11 +103,18 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "TimerSelectorViewController", bundle: ...)`
+    static func timerSelectorViewController(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.timerSelectorViewController)
+    }
+    #endif
+
     fileprivate init() {}
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 7 colors.
+  /// This `R.color` struct is generated, and contains static references to 13 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -113,6 +122,18 @@ struct R: Rswift.Validatable {
     static let seaPrimaryColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SeaPrimaryColor")
     /// Color `backgroundColor`.
     static let backgroundColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "backgroundColor")
+    /// Color `buttonActionBackgroundDefault`.
+    static let buttonActionBackgroundDefault = Rswift.ColorResource(bundle: R.hostingBundle, name: "buttonActionBackgroundDefault")
+    /// Color `buttonActionBackgroundFire`.
+    static let buttonActionBackgroundFire = Rswift.ColorResource(bundle: R.hostingBundle, name: "buttonActionBackgroundFire")
+    /// Color `buttonActionBackgroundForest`.
+    static let buttonActionBackgroundForest = Rswift.ColorResource(bundle: R.hostingBundle, name: "buttonActionBackgroundForest")
+    /// Color `buttonActionBackgroundRain`.
+    static let buttonActionBackgroundRain = Rswift.ColorResource(bundle: R.hostingBundle, name: "buttonActionBackgroundRain")
+    /// Color `buttonActionBackgroundSea`.
+    static let buttonActionBackgroundSea = Rswift.ColorResource(bundle: R.hostingBundle, name: "buttonActionBackgroundSea")
+    /// Color `dimBackgroundColor`.
+    static let dimBackgroundColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "dimBackgroundColor")
     /// Color `firePrimaryColor`.
     static let firePrimaryColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "firePrimaryColor")
     /// Color `forestPrimaryColor`.
@@ -146,6 +167,60 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func backgroundColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.backgroundColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "buttonActionBackgroundDefault", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func buttonActionBackgroundDefault(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.buttonActionBackgroundDefault, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "buttonActionBackgroundFire", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func buttonActionBackgroundFire(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.buttonActionBackgroundFire, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "buttonActionBackgroundForest", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func buttonActionBackgroundForest(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.buttonActionBackgroundForest, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "buttonActionBackgroundRain", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func buttonActionBackgroundRain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.buttonActionBackgroundRain, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "buttonActionBackgroundSea", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func buttonActionBackgroundSea(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.buttonActionBackgroundSea, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "dimBackgroundColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func dimBackgroundColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.dimBackgroundColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -206,6 +281,54 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func backgroundColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.backgroundColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "buttonActionBackgroundDefault", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func buttonActionBackgroundDefault(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.buttonActionBackgroundDefault.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "buttonActionBackgroundFire", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func buttonActionBackgroundFire(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.buttonActionBackgroundFire.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "buttonActionBackgroundForest", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func buttonActionBackgroundForest(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.buttonActionBackgroundForest.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "buttonActionBackgroundRain", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func buttonActionBackgroundRain(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.buttonActionBackgroundRain.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "buttonActionBackgroundSea", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func buttonActionBackgroundSea(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.buttonActionBackgroundSea.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "dimBackgroundColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func dimBackgroundColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.dimBackgroundColor.name)
     }
     #endif
 
@@ -497,6 +620,79 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  struct string {
+    /// This `R.string.localizable` struct is generated, and contains static references to 4 localization keys.
+    struct localizable {
+      /// Value: +%@ min
+      static let popupTimerRestTimeValue = Rswift.StringResource(key: "popup.timer.restTime.value", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Rest time
+      static let popupTimerRestTimeTitle = Rswift.StringResource(key: "popup.timer.restTime.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Start
+      static let popupTimerStart = Rswift.StringResource(key: "popup.timer.start", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Timer
+      static let popupTimerTitle = Rswift.StringResource(key: "popup.timer.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: +%@ min
+      static func popupTimerRestTimeValue(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("popup.timer.restTime.value", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "popup.timer.restTime.value"
+        }
+
+        let format = NSLocalizedString("popup.timer.restTime.value", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: Rest time
+      static func popupTimerRestTimeTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("popup.timer.restTime.title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "popup.timer.restTime.title"
+        }
+
+        return NSLocalizedString("popup.timer.restTime.title", bundle: bundle, comment: "")
+      }
+
+      /// Value: Start
+      static func popupTimerStart(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("popup.timer.start", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "popup.timer.start"
+        }
+
+        return NSLocalizedString("popup.timer.start", bundle: bundle, comment: "")
+      }
+
+      /// Value: Timer
+      static func popupTimerTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("popup.timer.title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "popup.timer.title"
+        }
+
+        return NSLocalizedString("popup.timer.title", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()
@@ -523,6 +719,9 @@ struct _R: Rswift.Validatable {
       #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
+      #if os(iOS) || os(tvOS)
+      try timerSelectorViewController.validate()
+      #endif
     }
 
     #if os(iOS) || os(tvOS)
@@ -531,6 +730,22 @@ struct _R: Rswift.Validatable {
 
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct timerSelectorViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = TimerSelectorViewController
+
+      let bundle = R.hostingBundle
+      let name = "TimerSelectorViewController"
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {

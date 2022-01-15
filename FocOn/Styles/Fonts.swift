@@ -1,0 +1,23 @@
+//
+//  Fonts.swift
+//  FocOn
+//
+//  Created by Nikita Zhukov on 15.01.2022.
+//
+
+import UIKit
+
+class Styler {
+    let fonts = Fonts()
+    
+    let theme: Theme?
+    init(theme: Theme? = nil) {
+        self.theme = theme
+    }
+}
+
+struct Fonts {
+    let titlePopup = UIFont.preferredFont(forTextStyle: .title1)
+    let titleActionButton = UIFont.preferredFont(forTextStyle: .body)
+    let textPopup = UIFont.preferredFont(forTextStyle: .body)
+}

@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01046725279327FF00C79D36 /* TimerSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01046724279327FF00C79D36 /* TimerSelectorViewController.swift */; };
+		010467272793281100C79D36 /* TimerSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010467262793281100C79D36 /* TimerSelectorViewController.storyboard */; };
+		0104672A27932D9400C79D36 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0104672927932D9400C79D36 /* Fonts.swift */; };
+		0104672C279330F500C79D36 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0104672B279330F500C79D36 /* Localizable.strings */; };
 		011D1180278B276D004FC5F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 011D117F278B276D004FC5F3 /* GoogleService-Info.plist */; };
 		011D1182278B2A99004FC5F3 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1181278B2A99004FC5F3 /* Track.swift */; };
 		011D1184278B2DE2004FC5F3 /* TrackerItemDescripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1183278B2DE2004FC5F3 /* TrackerItemDescripting.swift */; };
 		011D1187278B332D004FC5F3 /* TrackerItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1186278B332D004FC5F3 /* TrackerItems.swift */; };
 		011D1189278B338F004FC5F3 /* FBAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */; };
+		01E183422793344500018DD1 /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E183412793344500018DD1 /* AppValues.swift */; };
+		01E1834427933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1834327933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift */; };
+		01E1834627933E1400018DD1 /* TimerSelectorStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1834527933E1400018DD1 /* TimerSelectorStyler.swift */; };
 		175D609C182E87AF1456D58F /* Pods_FocOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFD41DF289674852595ACD5 /* Pods_FocOnTests.framework */; };
 		271F33BE270379DA00C02F9C /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271F33BD270379DA00C02F9C /* CustomSlider.swift */; };
 		27343F1D26FB35DC00116B19 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27343F1C26FB35DC00116B19 /* SettingsViewModel.swift */; };
@@ -92,11 +99,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01046724279327FF00C79D36 /* TimerSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorViewController.swift; sourceTree = "<group>"; };
+		010467262793281100C79D36 /* TimerSelectorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimerSelectorViewController.storyboard; sourceTree = "<group>"; };
+		0104672927932D9400C79D36 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		0104672B279330F500C79D36 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		011D117F278B276D004FC5F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		011D1181278B2A99004FC5F3 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		011D1183278B2DE2004FC5F3 /* TrackerItemDescripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerItemDescripting.swift; sourceTree = "<group>"; };
 		011D1186278B332D004FC5F3 /* TrackerItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerItems.swift; sourceTree = "<group>"; };
 		011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAnalyticsTracker.swift; sourceTree = "<group>"; };
+		01E183412793344500018DD1 /* AppValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppValues.swift; sourceTree = "<group>"; };
+		01E1834327933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorViewControllerBuilder.swift; sourceTree = "<group>"; };
+		01E1834527933E1400018DD1 /* TimerSelectorStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorStyler.swift; sourceTree = "<group>"; };
 		0AC8FE74A761949303315740 /* Pods-FocOn-FocOnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocOn-FocOnUITests.release.xcconfig"; path = "Target Support Files/Pods-FocOn-FocOnUITests/Pods-FocOn-FocOnUITests.release.xcconfig"; sourceTree = "<group>"; };
 		271F33BD270379DA00C02F9C /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		27343F1C26FB35DC00116B19 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -199,6 +213,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010467232793273600C79D36 /* TimerSelector */ = {
+			isa = PBXGroup;
+			children = (
+				01E1834527933E1400018DD1 /* TimerSelectorStyler.swift */,
+				01E1834327933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift */,
+				01046724279327FF00C79D36 /* TimerSelectorViewController.swift */,
+				010467262793281100C79D36 /* TimerSelectorViewController.storyboard */,
+			);
+			path = TimerSelector;
+			sourceTree = "<group>";
+		};
+		0104672827932D8200C79D36 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				0104672927932D9400C79D36 /* Fonts.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		011D1185278B3316004FC5F3 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +321,7 @@
 		27A9729626F0FE110012932D /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				01E183412793344500018DD1 /* AppValues.swift */,
 				278DFD5E2778D22700867EF0 /* SoundModel.swift */,
 				2758CAD3277E1472000B2E0D /* Theme.swift */,
 				27FC0E372781EFE200064CA9 /* AnimationState.swift */,
@@ -335,6 +369,7 @@
 				27A972AF26F123BD0012932D /* Settings */,
 				27A972AE26F123B40012932D /* Music */,
 				27A9729C26F0FE890012932D /* MainScreen */,
+				010467232793273600C79D36 /* TimerSelector */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -433,6 +468,7 @@
 		27D1C53926ECE53E00303E68 /* FocOn */ = {
 			isa = PBXGroup;
 			children = (
+				0104672827932D8200C79D36 /* Styles */,
 				011D1185278B3316004FC5F3 /* Analytics */,
 				27738CA52781A42B00C69550 /* Utils */,
 				27A9729826F0FE1D0012932D /* Service */,
@@ -443,6 +479,7 @@
 				27D1C54326ECE53F00303E68 /* Assets.xcassets */,
 				27D1C54526ECE53F00303E68 /* LaunchScreen.storyboard */,
 				27D1C54826ECE53F00303E68 /* Info.plist */,
+				0104672B279330F500C79D36 /* Localizable.strings */,
 				011D117F278B276D004FC5F3 /* GoogleService-Info.plist */,
 				27D1C56B26ECE92900303E68 /* R.generated.swift */,
 			);
@@ -600,6 +637,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010467272793281100C79D36 /* TimerSelectorViewController.storyboard in Resources */,
+				0104672C279330F500C79D36 /* Localizable.strings in Resources */,
 				27D1C54726ECE53F00303E68 /* LaunchScreen.storyboard in Resources */,
 				011D1180278B276D004FC5F3 /* GoogleService-Info.plist in Resources */,
 				27D1C54426ECE53F00303E68 /* Assets.xcassets in Resources */,
@@ -785,6 +824,7 @@
 				271F33BE270379DA00C02F9C /* CustomSlider.swift in Sources */,
 				2742313926F2505100A7162D /* ContentSizedTableView.swift in Sources */,
 				27F4FC6F26F4C23C001883B8 /* TransparentTabBarController.swift in Sources */,
+				01E183422793344500018DD1 /* AppValues.swift in Sources */,
 				27929A4926F32E72009DF3DD /* FadeInPresentationController.swift in Sources */,
 				27A972AA26F11D7B0012932D /* HomeRouter.swift in Sources */,
 				27D1C53B26ECE53E00303E68 /* AppDelegate.swift in Sources */,
@@ -799,11 +839,15 @@
 				2742313726F24AAF00A7162D /* Sizes.swift in Sources */,
 				2742313526F24AA400A7162D /* UICollectionView+Generics.swift in Sources */,
 				27A972A826F11B500012932D /* UIImage+Blur.swift in Sources */,
+				01046725279327FF00C79D36 /* TimerSelectorViewController.swift in Sources */,
 				27A972B526F1251C0012932D /* SettingsView.swift in Sources */,
+				01E1834427933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift in Sources */,
 				011D1189278B338F004FC5F3 /* FBAnalyticsTracker.swift in Sources */,
 				2742313F26F27A0800A7162D /* SlideInPresentationController.swift in Sources */,
 				27FC0E382781EFE200064CA9 /* AnimationState.swift in Sources */,
+				01E1834627933E1400018DD1 /* TimerSelectorStyler.swift in Sources */,
 				27343F2326FB3AF300116B19 /* SettingsBuilder.swift in Sources */,
+				0104672A27932D9400C79D36 /* Fonts.swift in Sources */,
 				2742312F26F24A1100A7162D /* SettingsTableViewCell.swift in Sources */,
 				276CD8ED27077C2B00B6EC58 /* AudioPlayer.swift in Sources */,
 				27A9729E26F0FE9B0012932D /* HomeContract.swift in Sources */,
