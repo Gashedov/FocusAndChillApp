@@ -6,23 +6,25 @@
 //
 
 import UIKit
+import Combine
 import SnapKit
 
 class OnboardingView: UIPageViewController {
     //MARK: - Properties
+    private var can: AnyCancellable?
     private let skipButton = UIButton()
     private let pageControl = UIPageControl(frame: .zero)
 
     private var pages: [UIViewController] = []
 
-    var viewModel: OnboardingViewModel?
+    var viewModel: OnboardingViewModel!
 
     //MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewControllers()
         addSubviews()
-        setupUI()
+        
+        setupViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +33,14 @@ class OnboardingView: UIPageViewController {
     }
 
     //MARK: - Private methods
+    
+    private func setupViewModel() {
+        can = viewModel.themePublisher?.sink { [weak self] theme in
+            self?.configureViewControllers(theme: theme)
+            self?.setupUI(theme: theme)
+        }
+    }
+    
     private func addSubviews() {
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints {
@@ -47,9 +57,9 @@ class OnboardingView: UIPageViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
-    private func setupUI() {
+    private func setupUI(theme: Theme) {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        view.backgroundColor = viewModel?.currentTheme.primaryColor
+        view.backgroundColor = theme.primaryColor
 
         dataSource = self
         delegate = self
@@ -65,13 +75,13 @@ class OnboardingView: UIPageViewController {
         pageControl.currentPageIndicatorTintColor = .white
     }
 
-    private func configureViewControllers() {
+    private func configureViewControllers(theme: Theme) {
         guard let viewModel = viewModel else {
             return
         }
 
         let musicViewController = BoardViewController(
-            theme: viewModel.currentTheme,
+            theme: theme,
             items: [MusicItem.loFi, MusicItem.jazz, MusicItem.classic],
             callback: { index in
                 guard let music = MusicItem(rawValue: index) else { return }
@@ -84,7 +94,7 @@ class OnboardingView: UIPageViewController {
         musicViewController.descriptionLabel.text = "Relaxing classic music or joyful jazz for inspiration, or maybe Lo-Fi beats perfect for work and study"
 
         let whiteNoizesViewController = BoardViewController(
-            theme: viewModel.currentTheme,
+            theme: theme,
             items: [WhiteNoizeItem.rain, WhiteNoizeItem.forest, WhiteNoizeItem.sea, WhiteNoizeItem.fire],
             callback: { [unowned self] index in
                 guard let theme = Theme(rawValue: index) else { return }
@@ -100,7 +110,7 @@ class OnboardingView: UIPageViewController {
 
         whiteNoizesViewController.titleLabel.text = "Where would you like to be?"
         whiteNoizesViewController.descriptionLabel.text = "Choose from our four beautiful locations and enjoy your time with Martha!"
-        whiteNoizesViewController.preselectedItemIndex = viewModel.currentTheme.rawValue
+        whiteNoizesViewController.preselectedItemIndex = theme.rawValue
 
         pages = [whiteNoizesViewController, musicViewController]
 
@@ -111,10 +121,6 @@ class OnboardingView: UIPageViewController {
     func skipButtonAction() {
         viewModel?.moveToMainScreen()
     }
-}
-
-//MARK - SceneViewModelDelegate implementation
-extension OnboardingView: OnboardingViewModelDelegate {
 }
 
 //MARK - UIPageViewControllerDelegate implementation

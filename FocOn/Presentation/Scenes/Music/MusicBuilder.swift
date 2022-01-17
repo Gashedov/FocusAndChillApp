@@ -8,12 +8,11 @@
 import UIKit
 
 class MusicBuilderImpl: MusicBuilder {
-    func build(withDelegate delegate: MainScreenDelegate) -> UIViewController {
+    func build() -> UIViewController {
         let view = MusicView()
         let router = MusicRouterImpl(view: view)
-        let viewModel = MusicViewModelImpl(router: router)
-        viewModel.delegate = view
-        viewModel.mainScreenDelegate = delegate
+        let viewModel = MusicViewModelImpl(router: router, themeRepository: ThemeRepository(), musicRepository: MusicRepository())
+        
         view.viewModel = viewModel
         return view
     }

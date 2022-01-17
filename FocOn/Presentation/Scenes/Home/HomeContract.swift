@@ -7,15 +7,15 @@
 
 import UIKit
 import Lottie
+import Combine
 
 protocol HomeBuilder {
     func build() -> UIViewController
 }
 
 protocol HomeViewModel {
+    var themePublisher: AnyPublisher<Theme, Never>? { get }
     var animations: [AnimationState: Animation] { get }
-    func fetchThemeAnimations()
-    func updateAnimations()
 }
 
 protocol HomeRouter {

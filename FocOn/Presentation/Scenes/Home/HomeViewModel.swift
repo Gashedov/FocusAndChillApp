@@ -7,26 +7,31 @@
 
 import Foundation
 import Lottie
+import Combine
 
 class HomeViewModelImpl: HomeViewModel {
     private let router: HomeRouter
-    private var theme: Theme {
-        let code = UserDefaultsService.shared.currentThemeCode
-        return Theme(rawValue: code) ?? .forest
+    private var can: AnyCancellable?
+    private let themeRepository: ThemeRepository
+    
+    var themePublisher: AnyPublisher<Theme, Never>? {
+        themeRepository.themePublisher
+            .map { [weak self] theme in
+                self?.onThemeUpdate(theme: theme)
+                return theme
+            }
+            .eraseToAnyPublisher()
     }
-
+    
     var animations: [AnimationState: Animation] = [:]
 
-    init(router: HomeRouter) {
+    init(router: HomeRouter, themeRepository: ThemeRepository) {
         self.router = router
+        self.themeRepository = themeRepository
     }
-
-    func fetchThemeAnimations() {
+    
+    private func onThemeUpdate(theme: Theme) {
         animations = fetchAnimations(named: theme.animationFolderName)
-    }
-
-    func updateAnimations() {
-        fetchThemeAnimations()
     }
 
     private func fetchAnimations(named: String) -> [AnimationState: Animation] {

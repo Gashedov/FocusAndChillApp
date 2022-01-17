@@ -6,46 +6,48 @@
 //
 
 import AVFoundation
+import Combine
 
 class MusicViewModelImpl: MusicViewModel {
+    private var can: AnyCancellable?
     private let router: MusicRouter
-    var theme: Theme {
-        Theme(rawValue: UserDefaultsService.shared.currentThemeCode) ?? .forest
-    }
-
+    private let themeRepository: ThemeRepository
+    private let musicRepository: MusicRepository
+    
     private var whiteNoizePlayer: AudioPlayer
     private var musicPlayer: AudioPlayer
-
-    var music: [SoundModel] = MusicItem.allCases
-    var whiteNoizes: [SoundModel] = WhiteNoizeItem.allCases
-
+    
+    var themePublisher: AnyPublisher<Theme, Never>? {
+        themeRepository.themePublisher.eraseToAnyPublisher()
+    }
+    var musicPublisher: AnyPublisher<[SoundModel], Never>? {
+        musicRepository.musicPublisher.eraseToAnyPublisher()
+    }
+    var whiteNoizesPublisher: AnyPublisher<[SoundModel], Never>? {
+        musicRepository.whiteNoizesPublisher.eraseToAnyPublisher()
+    }
+    
     let initialPlayerVolume: Float = 0.5
 
-    var delegate: MusicViewModelDelegate?
-    var mainScreenDelegate: MainScreenDelegate?
-
-    init(router: MusicRouter) {
+    init(router: MusicRouter, themeRepository: ThemeRepository, musicRepository: MusicRepository) {
         self.router = router
+        self.themeRepository = themeRepository
+        self.musicRepository = musicRepository
+    
         musicPlayer = AudioPlayer(initialVolume: initialPlayerVolume)
         whiteNoizePlayer = AudioPlayer(initialVolume: initialPlayerVolume)
     }
 
     func soundSelected(at index: Int, type: SoundType) {
-        guard let boundleUrl = Bundle.main.resourceURL else { return }
-
         switch type {
         case .music:
-            let url = boundleUrl.appendingPathComponent(music[index].soundUrlString)
+            let url = musicRepository.urlForMusic(by: index)
             musicPlayer.play(from: url)
         case .whiteNoize:
-            guard let item = whiteNoizes[index] as? WhiteNoizeItem else { return }
-            let url = boundleUrl.appendingPathComponent(item.soundUrlString)
+            let url = musicRepository.urlForNoize(by: index)
             whiteNoizePlayer.play(from: url)
-
-            if UserDefaultsService.shared.currentThemeCode != item.rawValue {
-                UserDefaultsService.shared.currentThemeCode = item.rawValue
-                mainScreenDelegate?.themeDidChange()
-            }
+            
+            themeRepository.theme = musicRepository.themeForNoize(by: index) ?? themeRepository.theme
         }
     }
 
@@ -67,6 +69,7 @@ class MusicViewModelImpl: MusicViewModel {
             whiteNoizePlayer.setVolume(volume)
         }
     }
+    
 
 //    func fetchMusic() {
 //        fetchSoundsFromBoundle(from: "Res/Sounds/Music", for: .music)

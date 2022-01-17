@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = UINavigationController(rootViewController: OnboardingBuilderImpl().build())
         window?.makeKeyAndVisible()
-        UserDefaultsService.shared.didLaunchbefore = true
+        UserDefaultsDataSource.shared.didLaunchbefore = true
         return true
     }
 }

@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import Combine
 
-class MusicView: UIViewController, TabController {
+class MusicView: UIViewController {
+    private var canMusic: AnyCancellable?
+    private var canNoize: AnyCancellable?
+    private var canTheme: AnyCancellable?
+    
     private let titleLabel = UILabel()
 
+    private var musicItems: [SoundModel] = []
+    private var noizeItems: [SoundModel] = []
+    
     private let whiteNoizeContainer = UIView()
     private let whiteNoizeLabel = UILabel()
     private let whiteNoizeSlider = CustomSlider()
@@ -62,8 +70,9 @@ class MusicView: UIViewController, TabController {
         return collection
     }()
 
-    var viewModel: MusicViewModel?
-
+    var viewModel: MusicViewModel!
+    var theme: Theme?
+    
     override func loadView() {
         view = UIView()
 
@@ -131,12 +140,29 @@ class MusicView: UIViewController, TabController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
+        setupViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Track.didShow(screen: .music)
+    }
+    
+    private func setupViewModel() {
+        canTheme = viewModel.themePublisher?.sink { [weak self] theme in
+            self?.updateUI(theme: theme)
+            self?.theme = theme
+        }
+        canMusic = viewModel.musicPublisher?.sink { [weak self] values in
+            self?.musicItems = values
+            self?.musicCollectionView.reloadData()
+        }
+        canNoize = viewModel.whiteNoizesPublisher?.sink { [weak self] values in
+            self?.noizeItems = values
+            self?.whiteNoizeCollectionView.reloadData()
+        }
     }
 
     private func setupUI() {
@@ -149,37 +175,30 @@ class MusicView: UIViewController, TabController {
         titleLabel.text = "Music"
         titleLabel.font = .systemFont(ofSize: 30, weight: .semibold)
         titleLabel.textAlignment = .left
-        titleLabel.textColor = viewModel.theme.primaryColor
 
         whiteNoizeLabel.text = "White noize"
         whiteNoizeLabel.font = .systemFont(ofSize: 25, weight: .semibold)
-        whiteNoizeLabel.textColor = viewModel.theme.primaryColor
 
-        whiteNoizeSlider.thumbTintColor = viewModel.theme.primaryColor
-        whiteNoizeSlider.tintColor = viewModel.theme.primaryColor
         whiteNoizeSlider.thumbImage(radius: 15)
         whiteNoizeSlider.value = viewModel.initialPlayerVolume
         whiteNoizeSlider.addTarget(self, action: #selector(sliderValueChangedAction(_:)), for: .valueChanged)
 
         musicLabel.text = "Music stream"
         musicLabel.font = .systemFont(ofSize: 25, weight: .semibold)
-        musicLabel.textColor = viewModel.theme.primaryColor
 
-        musicSlider.thumbTintColor = viewModel.theme.primaryColor
-        musicSlider.tintColor = viewModel.theme.primaryColor
         musicSlider.thumbImage(radius: 15)
         musicSlider.value = viewModel.initialPlayerVolume
         musicSlider.addTarget(self, action: #selector(sliderValueChangedAction(_:)), for: .valueChanged)
     }
 
-    func updateUI() {
-        titleLabel.textColor = viewModel?.theme.primaryColor
-        whiteNoizeLabel.textColor = viewModel?.theme.primaryColor
-        whiteNoizeSlider.thumbTintColor = viewModel?.theme.primaryColor
-        whiteNoizeSlider.tintColor = viewModel?.theme.primaryColor
-        musicLabel.textColor = viewModel?.theme.primaryColor
-        musicSlider.thumbTintColor = viewModel?.theme.primaryColor
-        musicSlider.tintColor = viewModel?.theme.primaryColor
+    func updateUI(theme: Theme) {
+        titleLabel.textColor = theme.primaryColor
+        whiteNoizeLabel.textColor = theme.primaryColor
+        whiteNoizeSlider.thumbTintColor = theme.primaryColor
+        whiteNoizeSlider.tintColor = theme.primaryColor
+        musicLabel.textColor = theme.primaryColor
+        musicSlider.thumbTintColor = theme.primaryColor
+        musicSlider.tintColor = theme.primaryColor
 
         musicCollectionView.reloadData()
         whiteNoizeCollectionView.reloadData()
@@ -226,9 +245,9 @@ extension MusicView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count: Int?
         if collectionView == whiteNoizeCollectionView {
-            count = viewModel?.whiteNoizes.count
+            count = noizeItems.count
         } else if collectionView == musicCollectionView {
-            count = viewModel?.music.count
+            count = musicItems.count
         }
 
         return count ?? 0
@@ -238,38 +257,29 @@ extension MusicView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let viewModel = viewModel else { return UICollectionViewCell() }
-
         var resultCell = UICollectionViewCell()
         if collectionView == whiteNoizeCollectionView {
-            let sound = viewModel.whiteNoizes[indexPath.row]
+            let sound = noizeItems[indexPath.row]
             let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.setup(
                 title: sound.title,
                 image: sound.icon,
-                primaryColor: viewModel.theme.primaryColor ?? .white,
+                primaryColor: theme?.primaryColor ?? .white,
                 selected: indexPath == selectedWhiteNoizeIndex
             )
             resultCell = cell
         } else if collectionView == musicCollectionView {
-            let sound = viewModel.music[indexPath.row]
+            let sound = musicItems[indexPath.row]
             let cell: SoundCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.setup(
                 title: sound.title,
                 image: sound.icon,
-                primaryColor: viewModel.theme.primaryColor ?? .white,
+                primaryColor: theme?.primaryColor ?? .white,
                 selected: indexPath == selectedMusicIndex
             )
             resultCell = cell
         }
 
         return resultCell
-    }
-}
-
-extension MusicView: MusicViewModelDelegate {
-    func musicReceived() {
-        whiteNoizeCollectionView.reloadData()
-        musicCollectionView.reloadData()
     }
 }

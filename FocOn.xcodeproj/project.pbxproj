@@ -16,6 +16,10 @@
 		011D1184278B2DE2004FC5F3 /* TrackerItemDescripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1183278B2DE2004FC5F3 /* TrackerItemDescripting.swift */; };
 		011D1187278B332D004FC5F3 /* TrackerItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1186278B332D004FC5F3 /* TrackerItems.swift */; };
 		011D1189278B338F004FC5F3 /* FBAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */; };
+		01C9B7822795A4F10043E6F8 /* ThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C9B7812795A4F10043E6F8 /* ThemeRepository.swift */; };
+		01D2C63F2795B85400DCE248 /* TimerSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2C63E2795B85400DCE248 /* TimerSelectorViewModel.swift */; };
+		01D2C6412795C68F00DCE248 /* MusicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2C6402795C68F00DCE248 /* MusicRepository.swift */; };
+		01D2C6432795C72F00DCE248 /* MusicViewCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2C6422795C72F00DCE248 /* MusicViewCollectionDelegate.swift */; };
 		01E183422793344500018DD1 /* AppValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E183412793344500018DD1 /* AppValues.swift */; };
 		01E1834427933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1834327933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift */; };
 		01E1834627933E1400018DD1 /* TimerSelectorStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1834527933E1400018DD1 /* TimerSelectorStyler.swift */; };
@@ -44,7 +48,7 @@
 		276E453426FC8ACC00C2E944 /* SoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E453326FC8ACC00C2E944 /* SoundCollectionViewCell.swift */; };
 		27726E8E26FA790800DCFEEB /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27726E8D26FA790800DCFEEB /* MainScreenView.swift */; };
 		27726E9026FA794200DCFEEB /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27726E8F26FA794200DCFEEB /* MainScreenBuilder.swift */; };
-		27738CA72781A44600C69550 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27738CA62781A44600C69550 /* UserDefaultsService.swift */; };
+		27738CA72781A44600C69550 /* UserDefaultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27738CA62781A44600C69550 /* UserDefaultsDataSource.swift */; };
 		278DFD5F2778D22700867EF0 /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278DFD5E2778D22700867EF0 /* SoundModel.swift */; };
 		278FF7FE2775074000B702AB /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278FF7FD2775074000B702AB /* BoardViewController.swift */; };
 		27929A4726F32B6C009DF3DD /* FadeInPresentaionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27929A4626F32B6C009DF3DD /* FadeInPresentaionManager.swift */; };
@@ -76,7 +80,6 @@
 		27FC0E382781EFE200064CA9 /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC0E372781EFE200064CA9 /* AnimationState.swift */; };
 		27FC0E3A27846CC300064CA9 /* WhiteNoiseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC0E3927846CC300064CA9 /* WhiteNoiseItem.swift */; };
 		27FC0E3C27846CFA00064CA9 /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC0E3B27846CFA00064CA9 /* MusicItem.swift */; };
-		27FC0E3E2784706900064CA9 /* MainScreenContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC0E3D2784706900064CA9 /* MainScreenContract.swift */; };
 		6C3D09A562E1C0A1ED1729B7 /* Pods_FocOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB351F645EDC9597625273A3 /* Pods_FocOn.framework */; };
 		EC307E949A2A05FD72F2CC4D /* Pods_FocOn_FocOnUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C22DDB767C85743089472B20 /* Pods_FocOn_FocOnUITests.framework */; };
 /* End PBXBuildFile section */
@@ -108,6 +111,10 @@
 		011D1183278B2DE2004FC5F3 /* TrackerItemDescripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerItemDescripting.swift; sourceTree = "<group>"; };
 		011D1186278B332D004FC5F3 /* TrackerItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerItems.swift; sourceTree = "<group>"; };
 		011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAnalyticsTracker.swift; sourceTree = "<group>"; };
+		01C9B7812795A4F10043E6F8 /* ThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepository.swift; sourceTree = "<group>"; };
+		01D2C63E2795B85400DCE248 /* TimerSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorViewModel.swift; sourceTree = "<group>"; };
+		01D2C6402795C68F00DCE248 /* MusicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRepository.swift; sourceTree = "<group>"; };
+		01D2C6422795C72F00DCE248 /* MusicViewCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewCollectionDelegate.swift; sourceTree = "<group>"; };
 		01E183412793344500018DD1 /* AppValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppValues.swift; sourceTree = "<group>"; };
 		01E1834327933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorViewControllerBuilder.swift; sourceTree = "<group>"; };
 		01E1834527933E1400018DD1 /* TimerSelectorStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorStyler.swift; sourceTree = "<group>"; };
@@ -136,7 +143,7 @@
 		276E453326FC8ACC00C2E944 /* SoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCollectionViewCell.swift; sourceTree = "<group>"; };
 		27726E8D26FA790800DCFEEB /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		27726E8F26FA794200DCFEEB /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
-		27738CA62781A44600C69550 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		27738CA62781A44600C69550 /* UserDefaultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataSource.swift; sourceTree = "<group>"; };
 		278DFD5E2778D22700867EF0 /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
 		278FF7FD2775074000B702AB /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		27929A4626F32B6C009DF3DD /* FadeInPresentaionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInPresentaionManager.swift; sourceTree = "<group>"; };
@@ -174,7 +181,6 @@
 		27FC0E372781EFE200064CA9 /* AnimationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationState.swift; sourceTree = "<group>"; };
 		27FC0E3927846CC300064CA9 /* WhiteNoiseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNoiseItem.swift; sourceTree = "<group>"; };
 		27FC0E3B27846CFA00064CA9 /* MusicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicItem.swift; sourceTree = "<group>"; };
-		27FC0E3D2784706900064CA9 /* MainScreenContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenContract.swift; sourceTree = "<group>"; };
 		2E12C171B8371B20B261E30F /* Pods-FocOn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocOn.debug.xcconfig"; path = "Target Support Files/Pods-FocOn/Pods-FocOn.debug.xcconfig"; sourceTree = "<group>"; };
 		5F0C42F098A24E450B57EAA0 /* Pods-FocOnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocOnTests.debug.xcconfig"; path = "Target Support Files/Pods-FocOnTests/Pods-FocOnTests.debug.xcconfig"; sourceTree = "<group>"; };
 		947D423457E03A141F3FDFFC /* Pods-FocOn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocOn.release.xcconfig"; path = "Target Support Files/Pods-FocOn/Pods-FocOn.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				01E1834527933E1400018DD1 /* TimerSelectorStyler.swift */,
 				01E1834327933ACD00018DD1 /* TimerSelectorViewControllerBuilder.swift */,
 				01046724279327FF00C79D36 /* TimerSelectorViewController.swift */,
+				01D2C63E2795B85400DCE248 /* TimerSelectorViewModel.swift */,
 				010467262793281100C79D36 /* TimerSelectorViewController.storyboard */,
 			);
 			path = TimerSelector;
@@ -241,6 +248,33 @@
 				011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		01C9B7802795A46F0043E6F8 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				01C9B7812795A4F10043E6F8 /* ThemeRepository.swift */,
+				01D2C6402795C68F00DCE248 /* MusicRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		01D2C63C2795AE6400DCE248 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				01D2C63D2795AE7D00DCE248 /* DataSource */,
+				27A9729826F0FE1D0012932D /* Service */,
+				01C9B7802795A46F0043E6F8 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		01D2C63D2795AE7D00DCE248 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				27738CA62781A44600C69550 /* UserDefaultsDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		2742312D26F249FF00A7162D /* Content */ = {
@@ -269,14 +303,6 @@
 				27A972A926F11D7B0012932D /* HomeRouter.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		27738CA52781A42B00C69550 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				27738CA62781A44600C69550 /* UserDefaultsService.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		27929A4326F32B2E009DF3DD /* PresentationController */ = {
@@ -331,13 +357,6 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		27A9729726F0FE180012932D /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		27A9729826F0FE1D0012932D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,7 +408,6 @@
 			children = (
 				27726E8D26FA790800DCFEEB /* MainScreenView.swift */,
 				27726E8F26FA794200DCFEEB /* MainScreenBuilder.swift */,
-				27FC0E3D2784706900064CA9 /* MainScreenContract.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -399,6 +417,7 @@
 			children = (
 				276E453226FC8AB400C2E944 /* Content */,
 				27A972B226F124DD0012932D /* MusicView.swift */,
+				01D2C6422795C72F00DCE248 /* MusicViewCollectionDelegate.swift */,
 				27343F2426FB432100116B19 /* MusicBuilder.swift */,
 				27343F2626FB437C00116B19 /* MusicContract.swift */,
 				27343F2826FB442B00116B19 /* MusicViewModel.swift */,
@@ -470,10 +489,8 @@
 			children = (
 				0104672827932D8200C79D36 /* Styles */,
 				011D1185278B3316004FC5F3 /* Analytics */,
-				27738CA52781A42B00C69550 /* Utils */,
-				27A9729826F0FE1D0012932D /* Service */,
-				27A9729726F0FE180012932D /* Data */,
 				27A9729626F0FE110012932D /* Domain */,
+				01D2C63C2795AE6400DCE248 /* Data */,
 				27A9729526F0FE090012932D /* Presentation */,
 				27D1C53A26ECE53E00303E68 /* AppDelegate.swift */,
 				27D1C54326ECE53F00303E68 /* Assets.xcassets */,
@@ -816,7 +833,7 @@
 				27343F2726FB437C00116B19 /* MusicContract.swift in Sources */,
 				27A972A426F117250012932D /* UIImageView+Blur.swift in Sources */,
 				27BB43B02767B524002C17E6 /* OnboardingView.swift in Sources */,
-				27738CA72781A44600C69550 /* UserDefaultsService.swift in Sources */,
+				27738CA72781A44600C69550 /* UserDefaultsDataSource.swift in Sources */,
 				27343F1F26FB35EE00116B19 /* SettingsContract.swift in Sources */,
 				2758CAD4277E1472000B2E0D /* Theme.swift in Sources */,
 				27343F1D26FB35DC00116B19 /* SettingsViewModel.swift in Sources */,
@@ -830,12 +847,14 @@
 				27D1C53B26ECE53E00303E68 /* AppDelegate.swift in Sources */,
 				2742313126F24A6A00A7162D /* ReuseIdentifiable.swift in Sources */,
 				27FC0E3C27846CFA00064CA9 /* MusicItem.swift in Sources */,
-				27FC0E3E2784706900064CA9 /* MainScreenContract.swift in Sources */,
 				2742313D26F2780300A7162D /* SlideInPresentationManager.swift in Sources */,
 				278FF7FE2775074000B702AB /* BoardViewController.swift in Sources */,
+				01C9B7822795A4F10043E6F8 /* ThemeRepository.swift in Sources */,
 				27BB43BA2767B613002C17E6 /* OnboardingContract.swift in Sources */,
 				2742313326F24A9800A7162D /* UITableView+Generics.swift in Sources */,
+				01D2C63F2795B85400DCE248 /* TimerSelectorViewModel.swift in Sources */,
 				27343F2B26FB453C00116B19 /* MusicRouter.swift in Sources */,
+				01D2C6412795C68F00DCE248 /* MusicRepository.swift in Sources */,
 				2742313726F24AAF00A7162D /* Sizes.swift in Sources */,
 				2742313526F24AA400A7162D /* UICollectionView+Generics.swift in Sources */,
 				27A972A826F11B500012932D /* UIImage+Blur.swift in Sources */,
@@ -865,6 +884,7 @@
 				27343F2526FB432100116B19 /* MusicBuilder.swift in Sources */,
 				27A972B326F124DD0012932D /* MusicView.swift in Sources */,
 				278DFD5F2778D22700867EF0 /* SoundModel.swift in Sources */,
+				01D2C6432795C72F00DCE248 /* MusicViewCollectionDelegate.swift in Sources */,
 				27A972A026F0FEFE0012932D /* HomeView.swift in Sources */,
 				27BB43BD2767BD9B002C17E6 /* BoardCollectionViewCell.swift in Sources */,
 			);

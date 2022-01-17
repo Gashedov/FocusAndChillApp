@@ -16,10 +16,9 @@ class OnboardingBuilderImpl: OnboardingBuilder {
         )
 
         let router = OnboardingRouterImpl(view: view)
-        let viewModel = OnboardingViewModelImpl(router: router)
+        let viewModel = OnboardingViewModelImpl(router: router, themeRepository: ThemeRepository())
 
         view.viewModel = viewModel
-        viewModel.delegate = view
         return view
     }
 }

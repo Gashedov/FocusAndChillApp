@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 protocol OnboardingViewModel {
-    var delegate: OnboardingViewModelDelegate? { get set }
-    var currentTheme: Theme { get }
-
+    var themePublisher: AnyPublisher<Theme, Never>? { get }
+    
     func changeTheme(to: Theme)
     func moveToMainScreen()
 }
@@ -20,9 +20,5 @@ protocol OnboardingBuilder {
 }
 
 protocol OnboardingRouter {
-    func moveToMainScreen(withTheme theme: Theme)
-}
-
-protocol OnboardingViewModelDelegate: AnyObject {
-
+    func moveToMainScreen()
 }

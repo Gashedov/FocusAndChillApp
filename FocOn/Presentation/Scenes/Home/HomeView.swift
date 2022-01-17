@@ -7,9 +7,10 @@
 
 import UIKit
 import SnapKit
+import Combine
 import Lottie
 
-class HomeView: UIViewController, TabController {
+class HomeView: UIViewController {
     private let backgroundAnimatedView = AnimationView()
 
 //    private var timer: Timer?
@@ -17,7 +18,8 @@ class HomeView: UIViewController, TabController {
 //    private var timerInitialValue = 2700
 //    @objc private let changesTimeValue = 300
 
-    var viewModel: HomeViewModel?
+    private var can: AnyCancellable?
+    var viewModel: HomeViewModel!
 
     override func loadView() {
         view = UIView()
@@ -30,8 +32,8 @@ class HomeView: UIViewController, TabController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel?.fetchThemeAnimations()
-        setupUI()
+        
+        setupViewModel()
 //        totalTime = timerInitialValue
 //        updateTimerLabel()
     }
@@ -45,15 +47,20 @@ class HomeView: UIViewController, TabController {
     private func setupUI() {
         view.backgroundColor = .lightGray
 
-        backgroundAnimatedView.animation = viewModel?.animations[.full]
+        backgroundAnimatedView.animation = viewModel.animations[.full]
         backgroundAnimatedView.loopMode = .loop
         backgroundAnimatedView.contentMode = .scaleAspectFill
     }
 
     func updateUI() {
-        viewModel?.updateAnimations()
-        backgroundAnimatedView.animation = viewModel?.animations[.full]
+        backgroundAnimatedView.animation = viewModel.animations[.full]
         backgroundAnimatedView.play(completion: nil)
+    }
+    
+    private func setupViewModel() {
+        can = viewModel.themePublisher?.sink { [weak self] _ in
+            self?.updateUI()
+        }
     }
 
 //    @objc private func changeTimerValue(_ sender: UIButton) {
