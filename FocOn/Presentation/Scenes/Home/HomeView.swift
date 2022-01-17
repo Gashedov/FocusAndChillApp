@@ -9,7 +9,17 @@ import UIKit
 import SnapKit
 import Lottie
 
+enum ProgressKeyFrames: CGFloat {
+    case write = 0
+    case up = 200
+    case shake = 400
+    case down = 600
+    case end = 800
+}
+
 class HomeView: UIViewController, TabController {
+    
+    private var shouldStartKitty = false
     private let backgroundAnimatedView = AnimationView()
 
 //    private var timer: Timer?
@@ -39,21 +49,58 @@ class HomeView: UIViewController, TabController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Track.didShow(screen: .home)
-        backgroundAnimatedView.play(completion: nil)
     }
 
     private func setupUI() {
         view.backgroundColor = .lightGray
 
         backgroundAnimatedView.animation = viewModel?.animations[.full]
-        backgroundAnimatedView.loopMode = .loop
+//        startInfiniteWritingAnimation()
+        startKittyShakingAnimation()
         backgroundAnimatedView.contentMode = .scaleAspectFill
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showKittyAnimation))
+        backgroundAnimatedView.isUserInteractionEnabled = true
+        backgroundAnimatedView.addGestureRecognizer(tap)
     }
 
     func updateUI() {
         viewModel?.updateAnimations()
         backgroundAnimatedView.animation = viewModel?.animations[.full]
-        backgroundAnimatedView.play(completion: nil)
+        startInfiniteWritingAnimation()
+    }
+    
+    @objc
+    private func showKittyAnimation() {
+        shouldStartKitty = true
+    }
+    
+    private func showAnimation() {
+        if shouldStartKitty == true {
+            shouldStartKitty = false
+            startKittyShakingAnimation()
+        } else {
+            startInfiniteWritingAnimation()
+        }
+    }
+    
+    private func startInfiniteWritingAnimation() {
+        backgroundAnimatedView.play(fromFrame: AnimationFrameTime(ProgressKeyFrames.write.rawValue),
+                                    toFrame: AnimationFrameTime(ProgressKeyFrames.up.rawValue),
+                                    loopMode: .playOnce) { [weak self] _ in
+            if Int.random(in: 0...13) == 0 {
+                self?.showKittyAnimation()
+            }
+            self?.showAnimation()
+        }
+    }
+    
+    private func startKittyShakingAnimation() {
+        backgroundAnimatedView.play(fromFrame: AnimationFrameTime(ProgressKeyFrames.up.rawValue),
+                                    toFrame: AnimationFrameTime(ProgressKeyFrames.end.rawValue),
+                                    loopMode: .playOnce) { [weak self] _ in
+            self?.showAnimation()
+        }
     }
 
 //    @objc private func changeTimerValue(_ sender: UIButton) {
