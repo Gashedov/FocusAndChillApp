@@ -11,7 +11,8 @@ class HomeBuilderImpl: HomeBuilder {
     func build() -> UIViewController {
         let view = HomeView()
         let router = HomeRouterImpl(view: view)
-        let viewModel = HomeViewModelImpl(router: router, themeRepository: ThemeRepository())
+        let viewModel = HomeViewModelImpl(router: router,
+                                          themeRepository: RepositoriesProvider.shared.themeRepository)
         
         view.viewModel = viewModel
         return view

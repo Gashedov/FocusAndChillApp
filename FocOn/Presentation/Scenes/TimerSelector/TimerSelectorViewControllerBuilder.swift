@@ -19,7 +19,7 @@ class TimerSelectorViewControllerBuilder {
         
         vc.styler = TimerSelectorStyler()
         vc.appValues = AppValues()
-        vc.viewModel = TimerSelectorViewModel(themeRepository: ThemeRepository())
+        vc.viewModel = TimerSelectorViewModel(themeRepository: RepositoriesProvider.shared.themeRepository)
         
         return vc
     }

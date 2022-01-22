@@ -70,32 +70,4 @@ class MusicViewModelImpl: MusicViewModel {
         }
     }
     
-
-//    func fetchMusic() {
-//        fetchSoundsFromBoundle(from: "Res/Sounds/Music", for: .music)
-//    }
-//
-//    private func fetchSoundsFromBoundle(from urlString: String, for soundType: SoundType) -> [Sound] {
-//        let fileManager = FileManager.default
-//        guard let BoundleUrl = Bundle.main.resourceURL else { return [] }
-//
-//        let resourceURL = BoundleUrl.appendingPathComponent(urlString)
-//        let resourceContent = (try? fileManager.contentsOfDirectory(
-//            at: resourceURL,
-//            includingPropertiesForKeys: nil
-//        )) ?? []
-//
-//
-//        return resourceContent.compactMap { soundFolderURL in
-//            guard let folderContent = try? fileManager.contentsOfDirectory(
-//                at: soundFolderURL,
-//                includingPropertiesForKeys: nil
-//            ) else { return nil }
-//
-//            let imageURL = folderContent.first(where: { $0.pathExtension == "pdf" })
-//            let soundURL = folderContent.first(where: { $0.pathExtension == "mp3" })
-//            let soundName = soundFolderURL.pathComponents.last ?? ""
-//            return Sound(title: soundName, url: soundURL, image: imageURL, type: soundType)
-//        }
-//    }
 }

@@ -17,6 +17,7 @@
 		011D1187278B332D004FC5F3 /* TrackerItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1186278B332D004FC5F3 /* TrackerItems.swift */; };
 		011D1189278B338F004FC5F3 /* FBAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */; };
 		01C9B7822795A4F10043E6F8 /* ThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C9B7812795A4F10043E6F8 /* ThemeRepository.swift */; };
+		01CFE81C279C388B00176F7C /* RepositoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CFE81B279C388B00176F7C /* RepositoriesProvider.swift */; };
 		01D2C63F2795B85400DCE248 /* TimerSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2C63E2795B85400DCE248 /* TimerSelectorViewModel.swift */; };
 		01D2C6412795C68F00DCE248 /* MusicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2C6402795C68F00DCE248 /* MusicRepository.swift */; };
 		01D2C6432795C72F00DCE248 /* MusicViewCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2C6422795C72F00DCE248 /* MusicViewCollectionDelegate.swift */; };
@@ -112,6 +113,7 @@
 		011D1186278B332D004FC5F3 /* TrackerItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerItems.swift; sourceTree = "<group>"; };
 		011D1188278B338F004FC5F3 /* FBAnalyticsTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAnalyticsTracker.swift; sourceTree = "<group>"; };
 		01C9B7812795A4F10043E6F8 /* ThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepository.swift; sourceTree = "<group>"; };
+		01CFE81B279C388B00176F7C /* RepositoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesProvider.swift; sourceTree = "<group>"; };
 		01D2C63E2795B85400DCE248 /* TimerSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectorViewModel.swift; sourceTree = "<group>"; };
 		01D2C6402795C68F00DCE248 /* MusicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRepository.swift; sourceTree = "<group>"; };
 		01D2C6422795C72F00DCE248 /* MusicViewCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewCollectionDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				01C9B7812795A4F10043E6F8 /* ThemeRepository.swift */,
 				01D2C6402795C68F00DCE248 /* MusicRepository.swift */,
+				01CFE81B279C388B00176F7C /* RepositoriesProvider.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				27929A4B26F32E98009DF3DD /* FadeInPresentationAnimator.swift in Sources */,
 				271F33BE270379DA00C02F9C /* CustomSlider.swift in Sources */,
 				2742313926F2505100A7162D /* ContentSizedTableView.swift in Sources */,
+				01CFE81C279C388B00176F7C /* RepositoriesProvider.swift in Sources */,
 				27F4FC6F26F4C23C001883B8 /* TransparentTabBarController.swift in Sources */,
 				01E183422793344500018DD1 /* AppValues.swift in Sources */,
 				27929A4926F32E72009DF3DD /* FadeInPresentationController.swift in Sources */,
