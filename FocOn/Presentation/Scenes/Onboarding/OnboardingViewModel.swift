@@ -6,30 +6,39 @@
 //
 
 import Foundation
+import Combine
 
 class OnboardingViewModelImpl: OnboardingViewModel {
     //MARK: - Properties
     private let router: OnboardingRouter
+    private let themeRepository: ThemeRepository
 
-    var currentTheme: Theme {
-        Theme(rawValue: UserDefaultsService.shared.currentThemeCode) ?? .rain
+    var themePublisher: AnyPublisher<Theme, Never>? {
+        themeRepository.themePublisher.eraseToAnyPublisher()
     }
-
-    weak var delegate: OnboardingViewModelDelegate?
+    
+    var themeDidChange: ((Theme) -> Void)?
 
     //MARK: - Initializer
-    init(router: OnboardingRouter) {
+    init(router: OnboardingRouter, themeRepository: ThemeRepository) {
         self.router = router
+        self.themeRepository = themeRepository
     }
 
     //MARK: - Internal methods
     func changeTheme(to theme: Theme) {
-        UserDefaultsService.shared.currentThemeCode = theme.rawValue
+        themeRepository.theme = theme
     }
 
     func moveToMainScreen() {
-        router.moveToMainScreen(withTheme: currentTheme)
+        router.moveToMainScreen()
     }
 
     //MARK: - Private methods
+    
+//    private func subscribe() {
+//        can = themeRepository.themePublisher.sink { [weak self] theme in
+//            self?.themeDidChange?(theme)
+//        }
+//    }
 }

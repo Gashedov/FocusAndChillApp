@@ -7,13 +7,13 @@
 
 import Foundation
 
-class UserDefaultsService {
+class UserDefaultsDataSource {
     struct Key {
         static let didLaunchbefore = "didLaunchbefore"
         static let currentThemeCode = "currentTheme"
     }
 
-    static let shared = UserDefaultsService()
+    static let shared = UserDefaultsDataSource()
 
     var didLaunchbefore: Bool {
         get {

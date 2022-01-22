@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 import Lottie
 
 enum ProgressKeyFrames: CGFloat {
@@ -17,17 +18,13 @@ enum ProgressKeyFrames: CGFloat {
     case end = 800
 }
 
-class HomeView: UIViewController, TabController {
+class HomeView: UIViewController {
     
     private var shouldStartKitty = false
     private let backgroundAnimatedView = AnimationView()
 
-//    private var timer: Timer?
-//    private var totalTime = 0
-//    private var timerInitialValue = 2700
-//    @objc private let changesTimeValue = 300
-
-    var viewModel: HomeViewModel?
+    private var can: AnyCancellable?
+    var viewModel: HomeViewModel!
 
     override func loadView() {
         view = UIView()
@@ -40,10 +37,8 @@ class HomeView: UIViewController, TabController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel?.fetchThemeAnimations()
-        setupUI()
-//        totalTime = timerInitialValue
-//        updateTimerLabel()
+        
+        setupViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +60,6 @@ class HomeView: UIViewController, TabController {
     }
 
     func updateUI() {
-        viewModel?.updateAnimations()
         backgroundAnimatedView.animation = viewModel?.animations[.full]
         startInfiniteWritingAnimation()
     }
@@ -102,72 +96,10 @@ class HomeView: UIViewController, TabController {
             self?.showAnimation()
         }
     }
-
-//    @objc private func changeTimerValue(_ sender: UIButton) {
-//        if sender == timerIncreaseButton {
-//            guard totalTime < 10800 else { return }
-//            totalTime += changesTimeValue
-//        }
-//        if sender == timerDecreaseButton {
-//            guard totalTime > 300 else { return }
-//            totalTime -= changesTimeValue
-//        }
-//        updateTimerLabel()
-//        timerInitialValue = totalTime
-//    }
-//
-//    @objc private func startTimer() {
-//        if timer == nil {
-//            updateTimer()
-//
-//            timer = Timer.scheduledTimer(
-//                timeInterval: 1.0,
-//                target: self,
-//                selector: #selector(updateTimer),
-//                userInfo: nil,
-//                repeats: true
-//            )
-//
-//            timerDecreaseButton.isHidden = true
-//            timerIncreaseButton.isHidden = true
-//        } else {
-//            timer?.invalidate()
-//            timer = nil
-//
-//            totalTime = timerInitialValue
-//            updateTimerLabel()
-//
-//            timerDecreaseButton.isHidden = false
-//            timerIncreaseButton.isHidden = false
-//        }
-//    }
-//
-//    @objc private func updateTimer() {
-//        if totalTime > 0 {
-//            totalTime -= 1
-//            updateTimerLabel()
-//        } else {
-//            timer?.invalidate()
-//            timer = nil
-//            setTimerValue(360)
-//        }
-//    }
-//
-//    private func updateTimerLabel() {
-//        let seconds: Int = totalTime % 60
-//        let minutes: Int = (totalTime / 60) % 60
-//        let hours: Int = (totalTime / 3600) % 60
-//        timerLabel.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-//    }
-//
-//    private func setTimerValue(_ value: Int) {
-//        guard value >= 300, value <= 10800 else { return }
-//        totalTime = value
-//        updateTimerLabel()
-//        timerInitialValue = totalTime
-//    }
-//
-//    private func udpateTimerMode() {
-//
-//    }
+    
+    private func setupViewModel() {
+        can = viewModel.themePublisher?.sink { [weak self] _ in
+            self?.updateUI()
+        }
+    }
 }

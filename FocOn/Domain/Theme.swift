@@ -13,8 +13,6 @@ enum Theme: Int {
     case sea
     case fire
 
-    static let shared = Theme(rawValue: UserDefaultsService.shared.currentThemeCode) ?? .rain
-
     var primaryColor: UIColor? {
         switch self {
         case .fire:

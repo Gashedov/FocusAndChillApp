@@ -62,12 +62,3 @@ class MainScreenView: TransparentTabBarController {
         present(builder.build(), animated: true, completion: nil)
     }
 }
-
-extension MainScreenView: MainScreenDelegate {
-    func themeDidChange() {
-        guard let controllers = viewControllers as? [TabController] else { return }
-        controllers.forEach {
-            $0.updateUI()
-        }
-    }
-}

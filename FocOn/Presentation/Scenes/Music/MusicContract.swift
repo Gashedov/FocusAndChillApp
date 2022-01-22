@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum SoundType {
     case music
@@ -13,23 +14,19 @@ enum SoundType {
 }
 
 protocol MusicBuilder {
-    func build(withDelegate: MainScreenDelegate) -> UIViewController
+    func build() -> UIViewController
 }
 
 protocol MusicViewModel {
-    var theme: Theme { get }
-    var music: [SoundModel] { get }
-    var whiteNoizes: [SoundModel] { get }
-    var delegate: MusicViewModelDelegate? { get set }
+    var themePublisher: AnyPublisher<Theme, Never>? { get }
+    var musicPublisher: AnyPublisher<[SoundModel], Never>? { get }
+    var whiteNoizesPublisher: AnyPublisher<[SoundModel], Never>? { get }
+    
     var initialPlayerVolume: Float { get }
     
     func soundSelected(at: Int, type: SoundType)
     func soundDeselected(type: SoundType)
     func setup(volume: Float, for: SoundType)
-}
-
-protocol MusicViewModelDelegate {
-    func musicReceived() 
 }
 
 protocol MusicRouter {

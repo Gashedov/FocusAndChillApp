@@ -14,7 +14,7 @@ class MainScreenBuilderImpl {
         let homeView = HomeBuilderImpl().build()
         homeView.tabBarItem.image = R.image.homeButton()
 
-        let musicView = MusicBuilderImpl().build(withDelegate: view)
+        let musicView = MusicBuilderImpl().build()
         musicView.tabBarItem.image = R.image.musicIcon()
 
         view.setViewControllers([homeView, musicView])

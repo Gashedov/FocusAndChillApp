@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 protocol TimerSelectorViewStyler {
+    var theme: Theme? { get set }
+    
     func background(view: UIView)
     func content(view: UIView)
     func ringPlaceholder(view: UIView)
@@ -36,11 +39,14 @@ final class TimerSelectorViewController: UIViewController {
     @IBOutlet private weak var buttonClose: UIButton!
     @IBOutlet private weak var buttonStart: UIButton!
     
+    private var can: AnyCancellable?
+    
     var onCloseComplition: (() -> Void)?
     var onStartComplition: ((_ value: Int) -> Void)?
     
     var styler: TimerSelectorViewStyler!
     var appValues: AppValues!
+    var viewModel: TimerSelectorViewModel!
     
     // MARK: - Initialization
 
@@ -49,6 +55,7 @@ final class TimerSelectorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViewModel()
         applyStyles()
     }
 
@@ -78,5 +85,12 @@ final class TimerSelectorViewController: UIViewController {
         styler.title(label: labelTitle)
         styler.restTimeTitle(label: labelRestTimeTitle)
         styler.restTimeValue(label: labelRestTimeValue, value: "\(appValues.restTimerDelta)")
+    }
+    
+    private func setupViewModel() {
+        can = viewModel.themePublisher?.sink { [weak self] theme in
+            self?.styler.theme = theme
+            self?.applyStyles()
+        }
     }
 }

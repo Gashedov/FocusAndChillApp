@@ -9,11 +9,7 @@ import UIKit
 
 class Styler {
     let fonts = Fonts()
-    
-    let theme: Theme?
-    init(theme: Theme? = nil) {
-        self.theme = theme
-    }
+    var theme: Theme?
 }
 
 struct Fonts {

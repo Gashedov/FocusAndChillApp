@@ -17,9 +17,9 @@ class TimerSelectorViewControllerBuilder {
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         
-        let theme = Theme(rawValue: UserDefaultsService.shared.currentThemeCode)
-        vc.styler = TimerSelectorStyler(theme: theme)
+        vc.styler = TimerSelectorStyler()
         vc.appValues = AppValues()
+        vc.viewModel = TimerSelectorViewModel(themeRepository: RepositoriesProvider.shared.themeRepository)
         
         return vc
     }
